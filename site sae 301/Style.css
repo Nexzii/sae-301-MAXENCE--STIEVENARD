@@ -1,0 +1,348 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1cbac9;
+    padding: 15px 30px;
+    border-radius: 0 0 15px 15px;
+}
+
+header .logo {
+    font-size: 28px;
+    color: #fff;
+    font-weight: bold;
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Hamburger menu for small screens */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav.active {
+    flex-direction: column;
+    background-color: #1cbac9;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+header nav a {
+    margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+    }
+}
+
+/* Fond bleu pour la section des filtres */
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: #1cbac9;
+    border-radius: 50px;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+/* Boutons de filtres */
+.filters select,
+.filters input {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    background-color: #ff6339;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Focus et survol des filtres */
+.filters select:focus,
+.filters input:focus,
+.filters select:hover,
+.filters input:hover {
+    outline: none;
+    background-color: #dd0303;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 99, 57, 0.5);
+}
+
+/* Responsivité pour mobile */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .filters select,
+    .filters input {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+/* Conteneur des cartes */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Cartes des animaux */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card .image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+}
+
+.card .info {
+    padding: 15px;
+    font-family: Arial, sans-serif;
+}
+
+.card .info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.card .info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Responsivité pour mobile */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filters select,
+    .filters input {
+        width: 100%;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #1cbac9;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px 15px 0 0;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Chat Page */
+.chat-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    background-color: #f9f9f9;
+}
+
+.chat-container .photo {
+    flex: 1;
+    max-width: 50%;
+}
+
+.chat-container .photo img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-container .details {
+    flex: 1;
+    max-width: 50%;
+}
+
+.chat-container .details h2 {
+    font-size: 24px;
+    color: #1cbac9;
+    margin-bottom: 15px;
+}
+
+.chat-container .details p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.chat-container .details button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff6339;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-container .details button:hover {
+    background-color: #dd0303;
+    box-shadow: 0 4px 10px rgba(255, 99, 57, 0.5);
+}
+
+
+/*CSS MAXENCE PAGE D'ACCEUIL*/
+/* Section Hero */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Contenu texte du Hero */
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;
+}
+
+.hero-button {
+    display: inline-block;
+    background: #FF9800;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background 0.3s ease;
+}
+
+.hero-button:hover {
+    background: #e68a00;
+}
+
+.hero-button span {
+    display: block;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.hero-button p {
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 0.9em;
+}
+
+/* Image du Hero */
+.hero-image-wrapper {
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    max-width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Adaptation Responsive */
+@media (max-width: 1024px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+    }
+    .hero-content, .hero-image-wrapper {
+        max-width: 100%;
+    }
+    .hero-image {
+        margin-top: 20px;
+    }
+}
