@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-include 'header.php';
+
 
 // Liste des espèces et races
 $especesRaces = [
@@ -59,6 +59,7 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administration des Animaux</title>
     <link rel="stylesheet" href="style.css">
+   <?php include 'header.php'; ?>
     <style>
         body {
             font-family: Arial, sans-serif;
