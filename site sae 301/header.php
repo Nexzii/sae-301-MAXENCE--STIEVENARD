@@ -96,12 +96,12 @@
             <span></span>
         </div>
         <nav class="nav-links desktop">
-            <a href="index.php">Accueil</a>
+            <a href="acceuil.php">Accueil</a>
             <a href="adoption.php">Adoption</a>
             <a href="apropos.php">À propos</a>
         </nav>
         <nav class="nav-links mobile">
-            <a href="index.php">Accueil</a>
+            <a href="acceuil.php">Accueil</a>
             <a href="adoption.php">Adoption</a>
             <a href="apropos.php">À propos</a>
         </nav>
