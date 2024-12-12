@@ -1,90 +1,284 @@
-/*CSS MAXENCE PAGE D'ACCEUIL*/
-/* Section Hero */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+    background-color: #00bcd4;
+    padding: 10px 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Hero Section */
 .hero-section {
     position: relative;
-    width: 100%;
-    height: 60vh; /* Hauteur de la section */
-    background: url("recources/esperance-vie-chiens-chiot-golden-retriever.jpg") no-repeat center center/cover; /* Image de fond */
+    width: 90%;
+    height: 50vh;
+    background: url("recources/esperance-vie-chiens-chiot-golden-retriever.jpg") no-repeat center center/cover;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Ombre douce */
-    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin: 40px auto;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Texte à gauche et bouton à droite */
+    justify-content: space-between;
     padding: 20px;
 }
 
-/* Contenu texte */
 .hero-content {
-    max-width: 40%; /* Largeur limitée pour le texte */
+    max-width: 40%;
     color: #ffffff;
-    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
     padding: 20px;
     border-radius: 10px;
     text-align: left;
 }
 
-.hero-content h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.hero-content p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-/* Bouton Hero avec une forme personnalisée */
 .hero-button {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    display: inline-block;
     background-color: #FF9800;
-    color: #ffffff;
-    padding: 15px 30px;
+    color: #fff;
+    padding: 15px 25px;
     text-decoration: none;
-    font-weight: bold;
-    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    border-radius: 30px;
+    font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .hero-button:hover {
     background-color: #e68a00;
-    transform: scale(1.05); /* Effet d'agrandissement */
+    transform: scale(1.05);
 }
 
-.hero-button span {
-    display: block;
+/* Carousel Section */
+.carousel-section {
+    background-color: #f9f9f9;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 500px;
+    text-align: center;
+}
+
+.carousel-section h2 {
+    font-family: 'Isidora Soft Alt', sans-serif;
+    font-size: 2rem;
+    color: #FF6F61;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.carousel-card {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 250px;
+    margin: auto;
+}
+
+.carousel-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-card img {
+    border-radius: 30px;
+    border-radius: 10px;
+    max-height: 180px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.carousel-card h3 {
+    font-family: 'Isidora Soft Alt', sans-serif;
+    font-size: 1.4rem;
+    color: #FF6F61;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.carousel-card p {
     font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
 }
 
-.hero-button p {
-    margin: 0;
-    font-size: 0.8rem;
-    font-weight: normal;
-    color: rgba(255, 255, 255, 0.8);
+.carousel-item.active .carousel-card {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1; /* S'assurer qu'ils sont devant les autres éléments */
+    width: 40px;
+    height: 40px;
+}
+
+.carousel-control-prev {
+    left: 10px; /* Ajustez cette valeur pour éloigner ou rapprocher du bord */
+}
+
+.carousel-control-next {
+    right: 10px; /* Ajustez cette valeur pour éloigner ou rapprocher du bord */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%; /* Centre verticalement */
+    transform: translateY(-50%); /* Ajuste le décalage vertical */
+    width: 40px;
+    height: 40px;
+    z-index: 1; /* S'assurer qu'ils sont visibles */
+    cursor: pointer;
+}
+
+.carousel-control-prev {
+    left: 10px; /* Distance du côté gauche */
+}
+
+.carousel-control-next {
+    right: 10px; /* Distance du côté droit */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: inline-block;
+    background-color: #FF6F61;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-size: 50%; /* Ajuste la taille de l'icône */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: #e65a4f;
+}
+
+
+/* Contact Section */
+.contact-section {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 20px;
+    margin: 40px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+}
+
+.contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-text {
+    flex: 1;
+    max-width: 60%;
+}
+
+.contact-text h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-text p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #FF6F3C;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-button:hover {
+    background-color: #e05b2e;
+    transform: translateY(-3px);
+}
+
+.contact-image {
+    border-radius: 30px;
+    flex: 1;
+    max-width: 30%;
+}
+
+.contact-image img {
+    border-radius: 30px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .hero-section {
-        flex-direction: column; /* Colonne sur petits écrans */
-        height: 70vh;
+@media (max-width: 768px) {
+    .carousel-section {
+        padding: 20px;
     }
 
-    .hero-content {
-        max-width: 80%;
-        text-align: center;
-        margin-bottom: 20px;
+    .carousel-card img {
+        max-height: 150px;
     }
 
-    .hero-button {
-        position: static;
-        margin: 20px auto 0;
-        display: block;
+    .carousel-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .carousel-card p {
+        font-size: 0.9rem;
     }
 }
