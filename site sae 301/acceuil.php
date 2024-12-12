@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-include 'header.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,19 +12,19 @@ include 'header.php';
 
 </head>
 <body>
-
+<?php include 'header.php';?>
 <section class="hero-section">
     <div class="hero-content">
         <h1>Refuge pour animaux</h1>
-        <a href="apropos.php" class="hero-button">
-            <span>A propos</span>
-            <p>En apprendre plus<br>sur nous</p>
-        </a>
+        <p>Offrez un foyer chaleureux à nos animaux en attente d'adoption.</p>
     </div>
-    <div class="hero-image-wrapper">
-        <img src="recources/moi.jpg" alt="Chien heureux" class="hero-image">
-    </div>
+    <a href="apropos.php" class="hero-button">À propos →</a>
 </section>
+
+
+
+
+
 
 
 </body>
