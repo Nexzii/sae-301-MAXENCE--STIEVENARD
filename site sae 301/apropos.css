@@ -1,0 +1,57 @@
+.about-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about-section .logo {
+    max-width: 150px;
+    margin: 0 auto 20px;
+}
+
+.location-section {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.contact-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-section .contacts a {
+    display: inline-block;
+    margin: 10px;
+    font-size: 20px;
+    color: #1cbac9;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-section .contacts a:hover {
+    text-decoration: underline;
+}
+
+.saviors-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.saviors-section .saviors {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.saviors-section .saviors div {
+    text-align: center;
+    width: 100px;
+}
+
+.saviors-section .saviors img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
