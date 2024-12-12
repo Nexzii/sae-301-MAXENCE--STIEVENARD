@@ -1,12 +1,50 @@
-/*CSS MAXENCE PAGE D'ACCEUIL*/
+/* Style général */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #00bcd4;
+    padding: 10px 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
 /* Section Hero */
 .hero-section {
     position: relative;
-    width: 100%;
-    height: 60vh; /* Hauteur de la section */
-    background: url("recources/esperance-vie-chiens-chiot-golden-retriever.jpg") no-repeat center center/cover; /* Image de fond */
+    width: 90%; /* Largeur de la section */
+    height: 50vh; /* Hauteur réduite de l'image */
+    background: url("recources/esperance-vie-chiens-chiot-golden-retriever.jpg") no-repeat center center/cover;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 40px auto;
     display: flex;
@@ -19,7 +57,6 @@
 .hero-content {
     max-width: 40%; /* Largeur limitée pour le texte */
     color: #ffffff;
-    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
     padding: 20px;
     border-radius: 10px;
     text-align: left;
@@ -37,7 +74,7 @@
     line-height: 1.6;
 }
 
-/* Bouton Hero avec une forme personnalisée */
+/* Bouton Hero avec forme personnalisée */
 .hero-button {
     position: absolute;
     bottom: 20px;
@@ -45,10 +82,11 @@
     display: inline-block;
     background-color: #FF9800;
     color: #ffffff;
-    padding: 15px 30px;
+    padding: 15px 25px;
     text-decoration: none;
     font-weight: bold;
-    clip-path: polygon(10% 0%, 90% 0%, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+    border-radius: 30px;
+    font-size: 1rem;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -59,14 +97,27 @@
 
 .hero-button span {
     display: block;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .hero-button p {
-    margin: 0;
-    font-size: 0.8rem;
+    margin: 5px 0 0;
+    font-size: 0.9rem;
     font-weight: normal;
     color: rgba(255, 255, 255, 0.8);
+}
+
+.button-deco {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.circle {
+    width: 15px;
+    height: 15px;
+    background-color: #ccc;
+    border-radius: 50%;
 }
 
 /* Responsive Design */
@@ -87,4 +138,188 @@
         margin: 20px auto 0;
         display: block;
     }
+}
+.carousel-item img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+/* Section Carrousel */
+.carousel-section {
+    text-align: center;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.carousel-section h2 {
+    font-size: 2rem;
+    color: #FF6F3C; /* Couleur principale */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Style pour le carrousel */
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.carousel-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 10px;
+    max-width: 300px;
+    margin: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.carousel-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+.carousel-card p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 5px 0 10px;
+}
+
+/* Boutons du carrousel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #FF6F3C;
+    border-radius: 50%;
+    padding: 10px;
+    width: 35px;
+    height: 35px;
+}
+.adoption-carousel {
+    text-align: center;
+    margin: 40px auto;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #FF6F3C;
+    margin-bottom: 20px;
+}
+
+.card-deck {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    background: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 30%;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 5px;
+}
+/* Section Contact */
+.contact-section {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 20px;
+    margin: 40px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+}
+
+.contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact-text {
+    flex: 1;
+    max-width: 60%;
+}
+
+.contact-text h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-text p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #FF6F3C;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-button:hover {
+    background-color: #e05b2e;
+    transform: translateY(-3px);
+}
+
+.contact-image {
+    flex: 1;
+    max-width: 30%;
+}
+
+.contact-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }

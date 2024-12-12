@@ -1,141 +1,71 @@
 <?php
-include 'config.php';
+// Charger la configuration et les classes nécessaires
+require_once 'config.php';
+require_once 'classes/Database.php';
+require_once 'classes/DemandeAdoption.php';
+require_once 'classes/Animal.php';
 
+// Initialiser les classes nécessaires
+$db = new Database();
+$pdo = $db->getConnection();
+$animal = new Animal($pdo);
+$demandeAdoption = new DemandeAdoption($pdo);
 
-// Récupération des filtres
-$whereClauses = [];
-$params = [];
+// Récupérer tous les chats
+$chats = $animal->getAllChats();
 
-if (!empty($_GET['espece'])) {
-    $whereClauses[] = "espece = ?";
-    $params[] = $_GET['espece'];
+// Si le formulaire est soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $chatId = $_POST['chat_id'];
+    $nomFamille = $_POST['nom_famille'];
+    $email = $_POST['email'];
+    $telephone = $_POST['telephone'];
+    $message = $_POST['message'];
+
+    // Enregistrer la demande
+    if ($demandeAdoption->create($chatId, $nomFamille, $email, $telephone, $message)) {
+        echo "<p style='color: green;'>Votre demande a été soumise avec succès ! Nous vous contacterons bientôt.</p>";
+    } else {
+        echo "<p style='color: red;'>Une erreur est survenue. Veuillez réessayer.</p>";
+    }
 }
-
-if (!empty($_GET['race'])) {
-    $whereClauses[] = "race = ?";
-    $params[] = $_GET['race'];
-}
-
-if (!empty($_GET['sexe'])) {
-    $whereClauses[] = "sexe = ?";
-    $params[] = $_GET['sexe'];
-}
-
-if (!empty($_GET['lieu_adoption'])) {
-    $whereClauses[] = "lieu_adoption LIKE ?";
-    $params[] = "%" . $_GET['lieu_adoption'] . "%";
-}
-
-if (!empty($_GET['age'])) {
-    $age = (int)$_GET['age'];
-    $whereClauses[] = "TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) = ?";
-    $params[] = $age;
-}
-
-// Construire la requête SQL
-$whereSql = !empty($whereClauses) ? "WHERE " . implode(" AND ", $whereClauses) : "";
-$query = $pdo->prepare("SELECT *, TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) AS age FROM animaux $whereSql ORDER BY created_at DESC");
-$query->execute($params);
-
-// Récupérer les résultats
-$animaux = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ami 4 Pattes - Accueil</title>
+    <title>Demande d'Adoption</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php include 'header.php'; ?>
 
-    <div class="filters">
-        <select id="espece" onchange="updateResults();">
-            <option value="">Espèces</option>
-            <option value="Chat">Chat</option>
-            <option value="Chien">Chien</option>
-        </select>
-        <select id="race" onchange="updateResults();">
-            <option value="">Races</option>
-        </select>
-        <select id="sexe" onchange="updateResults();">
-            <option value="">Sexe</option>
-            <option value="Mâle">Mâle</option>
-            <option value="Femelle">Femelle</option>
-        </select>
-        <select id="age" onchange="updateResults();">
-            <option value="">Âge</option>
-            <option value="1">1 an</option>
-            <option value="2">2 ans</option>
-            <option value="3">3 ans</option>
-            <option value="4">4 ans</option>
-        </select>
-        <input type="text" id="lieu_adoption" placeholder="Ville d'adoption" oninput="updateResults();">
-    </div>
-
     <main>
-        <h2 style="text-align: center;">Nos Animaux à l'Adoption</h2>
-        <div id="results" class="grid-container">
-            <?php foreach ($animaux as $animal): ?>
-                <a href="chat.php?id=<?= $animal['id'] ?>" class="card">
-                    <div class="image">
-                        <img src="<?= htmlspecialchars($animal['photo']) ?>" alt="Photo de <?= htmlspecialchars($animal['nom']) ?>">
-                    </div>
-                    <div class="info">
-                        <h3><?= htmlspecialchars($animal['nom']) ?></h3>
-                        <p>Âge : <?= htmlspecialchars($animal['age']) ?> an(s)</p>
-                        <p>Lieu : <?= htmlspecialchars($animal['lieu_adoption']) ?></p>
-                    </div>
-                </a>
-            <?php endforeach; ?>
-        </div>
+        <h2>Faire une demande d'adoption</h2>
+        <form method="POST" style="max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
+            <label for="chat_id">Choisissez un chat :</label>
+            <select name="chat_id" id="chat_id" required>
+                <option value="">-- Sélectionnez un chat --</option>
+                <?php foreach ($chats as $chat): ?>
+                    <option value="<?= htmlspecialchars($chat['id']) ?>"><?= htmlspecialchars($chat['nom']) ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <label for="nom_famille">Votre nom :</label>
+            <input type="text" name="nom_famille" id="nom_famille" required>
+
+            <label for="email">Votre email :</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="telephone">Votre téléphone :</label>
+            <input type="tel" name="telephone" id="telephone" required>
+
+            <label for="message">Message (optionnel) :</label>
+            <textarea name="message" id="message" rows="5"></textarea>
+
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Soumettre la demande</button>
+        </form>
     </main>
-
-    <script>
-        function updateResults() {
-            const espece = document.getElementById('espece').value;
-            const race = document.getElementById('race').value;
-            const sexe = document.getElementById('sexe').value;
-            const age = document.getElementById('age').value;
-            const lieuAdoption = document.getElementById('lieu_adoption').value;
-
-            const params = new URLSearchParams({ espece, race, sexe, age, lieu_adoption: lieuAdoption });
-
-            fetch('index.php?' + params.toString())
-                .then(response => response.text())
-                .then(html => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const newResults = doc.querySelector('#results');
-                    document.getElementById('results').innerHTML = newResults.innerHTML;
-                });
-        }
-
-        document.getElementById('espece').addEventListener('change', function () {
-            const espece = this.value;
-            const raceSelect = document.getElementById('race');
-            const racesByEspece = {
-                'Chat': ['Persan', 'Siamois', 'Maine Coon', 'Européen'],
-                'Chien': ['Labrador', 'Berger Allemand', 'Golden Retriever', 'Bulldog']
-            };
-
-            raceSelect.innerHTML = '<option value="">Races</option>';
-            if (racesByEspece[espece]) {
-                racesByEspece[espece].forEach(race => {
-                    const option = document.createElement('option');
-                    option.value = race;
-                    option.textContent = race;
-                    raceSelect.appendChild(option);
-                });
-            }
-
-            updateResults();
-        });
-    </script>
-
-    <?php include 'footer.php'; ?>
 </body>
 </html>
