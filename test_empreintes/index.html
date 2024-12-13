@@ -21,11 +21,11 @@
             height: 500px;
         }
 
-        #paw-print {
+        .paw-print {
             position: absolute;
             width: 50px;
             height: 50px;
-            pointer-events: none;
+            opacity: 0; /* Initialement transparent */
         }
 
     </style>
@@ -52,6 +52,8 @@
             const container = document.getElementById('container');
 
             // Créer les clones des empreintes et les positionner autour du cercle
+            const pawPrints = [];
+
             for (let i = 0; i < numPaws; i++) {
                 const angle = (i / numPaws) * 2 * Math.PI;  // Calcul de l'angle pour chaque empreinte
                 const x = centerX + radius * Math.cos(angle);  // Calcul de la position X sur le cercle
@@ -60,27 +62,28 @@
                 const pawPrint = document.createElement('img');
                 pawPrint.src = pawPrintSrc;
                 pawPrint.alt = "Pattes de chat";
-                pawPrint.id = 'paw-print';
+                pawPrint.classList.add('paw-print');
                 pawPrint.style.left = `${x - 25}px`;  // Centrer l'image
                 pawPrint.style.top = `${y - 25}px`;   // Centrer l'image
                 container.appendChild(pawPrint);
+                pawPrints.push(pawPrint);
             }
 
-            // Animer les empreintes autour du cercle
-            const pawPrints = document.querySelectorAll('#paw-print');
-            gsap.to(pawPrints, {
-                duration: 10,  // Durée de l'animation (en secondes)
-                rotation: 360,  // Rotation complète du cercle
-                repeat: -1,  // Répéter à l'infini
-                ease: "linear",  // Mouvement fluide
-                stagger: 0.1,  // Délais d'animation entre chaque empreinte
-                transformOrigin: "50% 50%",  // Définir l'origine de transformation au centre
-                motionPath: {
-                    path: container.querySelector('svg circle'),
-                    align: container.querySelector('svg circle'),
-                    autoRotate: true
-                }
-            });
+            // Animer l'opacité des empreintes autour du cercle
+            gsap.timeline({ repeat: -1 })
+                .to(pawPrints, {
+                    duration: 0.5, // Apparition
+                    opacity: 1,
+                    ease: "power1.inOut",
+                    stagger: 0.2 // Décalage automatique entre chaque empreinte
+                })
+                .to(pawPrints, {
+                    duration: 0.5, // Disparition
+                    opacity: 0,
+                    ease: "power1.inOut",
+                    stagger: 0.2, // Même décalage pour la disparition
+                    delay: 0.5 // Temps d'attente après apparition
+                });
         });
     </script>
 </body>
