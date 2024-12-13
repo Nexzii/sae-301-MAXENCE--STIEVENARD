@@ -90,8 +90,6 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
                         <img src="<?= htmlspecialchars($animal['photo']) ?>" class="card-img-top" alt="Photo de <?= htmlspecialchars($animal['nom']) ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($animal['nom']) ?></h5>
-                            <p class="card-text">Âge : <?= htmlspecialchars($animal['age']) ?> an(s)</p>
-                            <p class="card-text">Lieu : <?= htmlspecialchars($animal['lieu_adoption']) ?></p>
                         </div>
                     </a>
                 </div>
@@ -105,9 +103,8 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
             const race = document.getElementById('race').value;
             const sexe = document.getElementById('sexe').value;
             const age = document.getElementById('age').value;
-            const lieuAdoption = document.getElementById('lieu_adoption').value;
 
-            const params = new URLSearchParams({ espece, race, sexe, age, lieu_adoption: lieuAdoption });
+            const params = new URLSearchParams({ espece, race, sexe, age});
 
             fetch('adoption.php?' + params.toString())
                 .then(response => response.text())
