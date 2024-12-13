@@ -26,8 +26,8 @@
             width: 50px;
             height: 50px;
             pointer-events: none;
+            opacity: 0; /* Commencer avec les empreintes invisibles */
         }
-
     </style>
 </head>
 <body>
@@ -66,21 +66,22 @@
                 container.appendChild(pawPrint);
             }
 
-            // Animer les empreintes autour du cercle
+            // Animer l'apparition des empreintes
             const pawPrints = document.querySelectorAll('#paw-print');
-            gsap.to(pawPrints, {
-                duration: 10,  // Durée de l'animation (en secondes)
-                rotation: 360,  // Rotation complète du cercle
-                repeat: -1,  // Répéter à l'infini
-                ease: "linear",  // Mouvement fluide
-                stagger: 0.1,  // Délais d'animation entre chaque empreinte
-                transformOrigin: "50% 50%",  // Définir l'origine de transformation au centre
-                motionPath: {
-                    path: container.querySelector('svg circle'),
-                    align: container.querySelector('svg circle'),
-                    autoRotate: true
-                }
-            });
+
+            gsap.timeline({ repeat: -1, repeatDelay: 1 })
+                .to(pawPrints, {
+                    opacity: 1,
+                    duration: 1,  // Durée de l'apparition
+                    stagger: 0.5, // Décalage de 0.5s entre chaque apparition
+                    delay: 0.5, // Attendre 0.5s avant la première apparition
+                })
+                .to(pawPrints, {
+                    opacity: 0,
+                    duration: 1,  // Durée de la disparition
+                    stagger: 0.5, // Décalage de 0.5s entre chaque disparition
+                    delay: 1,  // Attendre 1s après l'apparition de la dernière empreinte avant de commencer à disparaître
+                });
         });
     </script>
 </body>
