@@ -91,7 +91,7 @@ header nav a {
     padding: 15px;
     background-color: #1cbac9;
     border-radius: 50px;
-    margin: 20px auto;
+    margin: 70px auto;
     width: fit-content;
 }
 
@@ -117,7 +117,7 @@ header nav a {
 .filters input:hover {
     outline: none;
     background-color: #dd0303;
-    color: #fff;
+    color: rgb(255, 255, 255);
     box-shadow: 0 0 10px rgba(255, 99, 57, 0.5);
 }
 

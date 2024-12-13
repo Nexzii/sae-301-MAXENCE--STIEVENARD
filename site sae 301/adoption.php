@@ -1,71 +1,146 @@
 <?php
-// Charger la configuration et les classes nécessaires
-require_once 'config.php';
-require_once 'classes/Database.php';
-require_once 'classes/DemandeAdoption.php';
-require_once 'classes/Animal.php';
+include 'config.php';
 
-// Initialiser les classes nécessaires
-$db = new Database();
-$pdo = $db->getConnection();
-$animal = new Animal($pdo);
-$demandeAdoption = new DemandeAdoption($pdo);
 
-// Récupérer tous les chats
-$chats = $animal->getAllChats();
+// Récupération des filtres
+$whereClauses = [];
+$params = [];
 
-// Si le formulaire est soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $chatId = $_POST['chat_id'];
-    $nomFamille = $_POST['nom_famille'];
-    $email = $_POST['email'];
-    $telephone = $_POST['telephone'];
-    $message = $_POST['message'];
-
-    // Enregistrer la demande
-    if ($demandeAdoption->create($chatId, $nomFamille, $email, $telephone, $message)) {
-        echo "<p style='color: green;'>Votre demande a été soumise avec succès ! Nous vous contacterons bientôt.</p>";
-    } else {
-        echo "<p style='color: red;'>Une erreur est survenue. Veuillez réessayer.</p>";
-    }
+if (!empty($_GET['espece'])) {
+    $whereClauses[] = "espece = ?";
+    $params[] = $_GET['espece'];
 }
+
+if (!empty($_GET['race'])) {
+    $whereClauses[] = "race = ?";
+    $params[] = $_GET['race'];
+}
+
+if (!empty($_GET['sexe'])) {
+    $whereClauses[] = "sexe = ?";
+    $params[] = $_GET['sexe'];
+}
+
+if (!empty($_GET['age'])) {
+    $age = (int)$_GET['age'];
+    $whereClauses[] = "TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) = ?";
+    $params[] = $age;
+}
+
+// Construire la requête SQL
+$whereSql = !empty($whereClauses) ? "WHERE " . implode(" AND ", $whereClauses) : "";
+$query = $pdo->prepare("SELECT *, TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) AS age FROM animaux $whereSql ORDER BY created_at DESC");
+$query->execute($params);
+
+// Récupérer les résultats
+$animaux = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demande d'Adoption</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Ami 4 Pattes - Accueil</title>
+    <link rel="stylesheet" href="Style.css">
 </head>
 <body>
     <?php include 'header.php'; ?>
 
-    <main>
-        <h2>Faire une demande d'adoption</h2>
-        <form method="POST" style="max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);">
-            <label for="chat_id">Choisissez un chat :</label>
-            <select name="chat_id" id="chat_id" required>
-                <option value="">-- Sélectionnez un chat --</option>
-                <?php foreach ($chats as $chat): ?>
-                    <option value="<?= htmlspecialchars($chat['id']) ?>"><?= htmlspecialchars($chat['nom']) ?></option>
-                <?php endforeach; ?>
-            </select>
+    <div class="container my-4">
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <label for="espece" class="form-label">Espèce</label>
+                <select id="espece" class="form-select" onchange="updateResults();">
+                    <option value="">Espèces</option>
+                    <option value="Chat">Chat</option>
+                    <option value="Chien">Chien</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="race" class="form-label">Race</label>
+                <select id="race" class="form-select" onchange="updateResults();">
+                    <option value="">Races</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="sexe" class="form-label">Sexe</label>
+                <select id="sexe" class="form-select" onchange="updateResults();">
+                    <option value="">Sexe</option>
+                    <option value="Mâle">Mâle</option>
+                    <option value="Femelle">Femelle</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="age" class="form-label">Âge</label>
+                <select id="age" class="form-select" onchange="updateResults();">
+                    <option value="">Âge</option>
+                    <option value="1">1 an</option>
+                    <option value="2">2 ans</option>
+                    <option value="3">3 ans</option>
+                    <option value="4">4 ans</option>
+                </select>
+            </div>
+        </div>
 
-            <label for="nom_famille">Votre nom :</label>
-            <input type="text" name="nom_famille" id="nom_famille" required>
+        <div id="results" class="row row-cols-1 row-cols-md-3 g-4">
+            <?php foreach ($animaux as $animal): ?>
+                <div class="col">
+                    <a href="chat.php?id=<?= $animal['id'] ?>" class="card h-100 text-decoration-none">
+                        <img src="<?= htmlspecialchars($animal['photo']) ?>" class="card-img-top" alt="Photo de <?= htmlspecialchars($animal['nom']) ?>">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= htmlspecialchars($animal['nom']) ?></h5>
+                            <p class="card-text">Âge : <?= htmlspecialchars($animal['age']) ?> an(s)</p>
+                            <p class="card-text">Lieu : <?= htmlspecialchars($animal['lieu_adoption']) ?></p>
+                        </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 
-            <label for="email">Votre email :</label>
-            <input type="email" name="email" id="email" required>
+    <script>
+        function updateResults() {
+            const espece = document.getElementById('espece').value;
+            const race = document.getElementById('race').value;
+            const sexe = document.getElementById('sexe').value;
+            const age = document.getElementById('age').value;
+            const lieuAdoption = document.getElementById('lieu_adoption').value;
 
-            <label for="telephone">Votre téléphone :</label>
-            <input type="tel" name="telephone" id="telephone" required>
+            const params = new URLSearchParams({ espece, race, sexe, age, lieu_adoption: lieuAdoption });
 
-            <label for="message">Message (optionnel) :</label>
-            <textarea name="message" id="message" rows="5"></textarea>
+            fetch('adoption.php?' + params.toString())
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newResults = doc.querySelector('#results');
+                    document.getElementById('results').innerHTML = newResults.innerHTML;
+                });
+        }
 
-            <button type="submit" style="width: 100%; padding: 10px; background-color: #333; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Soumettre la demande</button>
-        </form>
-    </main>
+        document.getElementById('espece').addEventListener('change', function () {
+            const espece = this.value;
+            const raceSelect = document.getElementById('race');
+            const racesByEspece = {
+                'Chat': ['Persan', 'Siamois', 'Maine Coon', 'Européen'],
+                'Chien': ['Labrador', 'Berger Allemand', 'Golden Retriever', 'Bulldog']
+            };
+
+            raceSelect.innerHTML = '<option value="">Races</option>';
+            if (racesByEspece[espece]) {
+                racesByEspece[espece].forEach(race => {
+                    const option = document.createElement('option');
+                    option.value = race;
+                    option.textContent = race;
+                    raceSelect.appendChild(option);
+                });
+            }
+
+            updateResults();
+        });
+    </script>
+
+    <?php include 'footer.php'; ?>
 </body>
 </html>
