@@ -4,7 +4,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
 }
 
 /* Header */
@@ -144,8 +143,6 @@ header nav a {
     gap: 20px;
     padding: 20px;
 }
-
-/* Cartes des animaux */
 
 /* Responsivité pour mobile */
 @media (max-width: 768px) {
