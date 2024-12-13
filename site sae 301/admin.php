@@ -1,6 +1,6 @@
+
 <?php
 include 'config.php';
-include 'header.php';
 
 // Liste des espèces et races
 $especesRaces = [
@@ -58,212 +58,132 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administration des Animaux</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        h1, h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .form-container, .demande-card {
-            margin-bottom: 20px;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-container input,
-        .form-container select,
-        .form-container textarea,
-        .form-container button {
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        .form-container button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .form-container button:hover {
-            background-color: #0056b3;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .card, .demande-card {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            position: relative;
-        }
-
-        .card img, .demande-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        .info p {
-            margin: 5px 0;
-        }
-
-        .actions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .actions a {
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .actions a.edit {
-            background: #28a745;
-            color: white;
-        }
-
-        .actions a.edit:hover {
-            background: #218838;
-        }
-
-        .actions a.delete {
-            background: #dc3545;
-            color: white;
-        }
-
-        .actions a.delete:hover {
-            background: #c82333;
-        }
-
-        .delete-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .delete-btn:hover {
-            background: #c82333;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="admin.css" rel="stylesheet">
 </head>
 <body>
-    <main>
-        <h1>Administration des Animaux</h1>
+<?php include 'header.php'; ?>
+<main class="container my-5">
+    <h1 class="text-center mb-4">Administration des Animaux</h1>
 
-        <!-- Formulaire pour ajouter un animal -->
-        <div class="form-container">
-            <h2>Ajouter un Animal</h2>
-            <form method="post" action="admin.php">
-                <input type="text" name="nom" placeholder="Nom" required>
-                <textarea name="description" placeholder="Description" required></textarea>
-                <select id="espece" name="espece" onchange="updateRaces()" required>
-                    <option value="">Sélectionner une espèce</option>
-                    <?php foreach (array_keys($especesRaces) as $espece): ?>
-                        <option value="<?= htmlspecialchars($espece) ?>"><?= htmlspecialchars($espece) ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <select id="race" name="race" required>
-                    <option value="">Sélectionner une race</option>
-                </select>
-                <input type="date" name="date_naissance" required>
-                <select name="sexe" required>
-                    <option value="Mâle">Mâle</option>
-                    <option value="Femelle">Femelle</option>
-                </select>
-                <input type="text" name="lieu_adoption" placeholder="Lieu d'adoption" required>
-                <input type="url" name="photo" placeholder="URL de la photo" required>
-                <button type="submit">Ajouter</button>
+    <!-- Formulaire pour ajouter un animal -->
+    <div class="form-container mb-4">
+        <div>
+            <h2 class="card-title">Ajouter un Animal</h2>
+            <form method="post" action="admin.php" >
+                <div>
+                    <label for="nom" class="form-label"></label>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required>
+                </div>
+                <div>
+                    <label for="description" class="form-label"></label>
+                    <textarea class="form-control" id="description" name="description" placeholder="Description" required></textarea>
+                </div>
+                <div>
+                    <label for="espece" class="form-label"></label>
+                    <select id="espece" class="form-select" name="espece" onchange="updateRaces()" required>
+                        <option value="">Sélectionner une espèce</option>
+                        <?php foreach (array_keys($especesRaces) as $espece): ?>
+                            <option value="<?= htmlspecialchars($espece) ?>"><?= htmlspecialchars($espece) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="race" class="form-label"></label>
+                    <select id="race" class="form-select" name="race" required>
+                        <option value="">Sélectionner une race</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="date_naissance" class="form-label"></label>
+                    <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
+                </div>
+                <div>
+                    <label for="sexe" class="form-label"></label>
+                    <select id="sexe" class="form-select" name="sexe" required>
+                        <option value="Mâle">Mâle</option>
+                        <option value="Femelle">Femelle</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="lieu_adoption" class="form-label"></label>
+                    <input type="text" class="form-control" id="lieu_adoption" name="lieu_adoption" placeholder="Lieu d'adoption" required>
+                </div>
+                <div>
+                    <label for="photo" class="form-label"></label>
+                    <input type="url" class="form-control" id="photo" name="photo" placeholder="URL de la photo" required>
+                </div>
+                <div class="pt-5 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary d-flex justify-content-center">Ajouter</button>
+                </div>
             </form>
         </div>
+    </div>
 
-        <!-- Liste des animaux -->
-        <h2>Liste des Animaux</h2>
-        <div class="grid-container">
-            <?php foreach ($animaux as $animal): ?>
-                <div class="card">
-                    <img src="<?= htmlspecialchars($animal['photo']) ?>" alt="Photo de <?= htmlspecialchars($animal['nom']) ?>">
-                    <div class="info">
-                        <p><strong>Nom :</strong> <?= htmlspecialchars($animal['nom']) ?></p>
-                        <p><strong>Date de naissance :</strong> <?= htmlspecialchars($animal['date_naissance']) ?></p>
-                        <p><strong>Sexe :</strong> <?= htmlspecialchars($animal['sexe']) ?></p>
-                        <p><strong>Espèce :</strong> <?= htmlspecialchars($animal['espece']) ?></p>
-                        <p><strong>Race :</strong> <?= htmlspecialchars($animal['race']) ?></p>
+    <!-- Liste des animaux -->
+    <h2 class="mb-3">Liste des Animaux</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <?php foreach ($animaux as $animal): ?>
+            <div class="col">
+                <div class="card h-100 custom-card">
+                    <img src="<?= htmlspecialchars($animal['photo']) ?>" class="card-img-top" alt="Photo de <?= htmlspecialchars($animal['nom']) ?>">
+                    <div class="card-body">
+                        <h5 class="card-title">Nom : <?= htmlspecialchars($animal['nom']) ?></h5>
+                        <p class="card-text">Date de naissance : <?= htmlspecialchars($animal['date_naissance']) ?></p>
+                        <p class="card-text">Sexe : <?= htmlspecialchars($animal['sexe']) ?></p>
+                        <p class="card-text">Espèce : <?= htmlspecialchars($animal['espece']) ?></p>
+                        <p class="card-text">Race : <?= htmlspecialchars($animal['race']) ?></p>
                     </div>
-                    <div class="actions">
-                        <a href="edit.php?id=<?= $animal['id'] ?>" class="edit">Modifier</a>
-                        <a href="delete.php?id=<?= $animal['id'] ?>" class="delete" onclick="return confirm('Voulez-vous vraiment supprimer cet animal ?')">Supprimer</a>
+                    <div class="card-footer d-flex justify-content-between card-custom-blue">
+                        <a href="./uploads/edit.php?id=<?= $animal['id'] ?>" class="btn btn-warning">Modifier</a>
+                        <a href="delete.php?id=<?= $animal['id'] ?>" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer cet animal ?')">Supprimer</a>
                     </div>
                 </div>
-            <?php endforeach; ?>
-        </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
 
-        <!-- Liste des demandes -->
-        <h2>Demandes d'Adoption</h2>
-        <div class="grid-container">
-            <?php foreach ($demandes as $demande): ?>
-                <div class="demande-card">
-                    <p><strong>Nom du Chat :</strong> <?= htmlspecialchars($demande['nom_chat']) ?></p>
-                    <p><strong>Famille :</strong> <?= htmlspecialchars($demande['nom_famille']) ?></p>
-                    <p><strong>Email :</strong> <?= htmlspecialchars($demande['email']) ?></p>
-                    <p><strong>Téléphone :</strong> <?= htmlspecialchars($demande['telephone']) ?></p>
-                    <p><strong>Message :</strong> <?= nl2br(htmlspecialchars($demande['message'])) ?></p>
-                    <p><strong>Description du Chat :</strong> <?= htmlspecialchars($demande['description_chat']) ?></p>
-                    <p class="date"><em>Demande envoyée le : <?= htmlspecialchars($demande['date_demande']) ?></em></p>
-                    <a href="?delete_demande_id=<?= $demande['id'] ?>" class="delete-btn" onclick="return confirm('Voulez-vous vraiment supprimer cette demande ?')">Supprimer</a>
+    <!-- Liste des demandes -->
+    <h2 class="mt-5 mb-3">Demandes d'Adoption</h2>
+    <div class="row row-cols-1 g-4 ">
+        <?php foreach ($demandes as $demande): ?>
+            <div class="col">
+                <div class="mb-3 rounded-4 mbdf ">
+                    <div class="m-3">
+                        <h5 class="card-title">Nom du Chat : <?= htmlspecialchars($demande['nom_chat']) ?></h5>
+                        <p class="card-text">Famille : <?= htmlspecialchars($demande['nom_famille']) ?></p>
+                        <p class="card-text">Email : <?= htmlspecialchars($demande['email']) ?></p>
+                        <p class="card-text">Téléphone : <?= htmlspecialchars($demande['telephone']) ?></p>
+                        <p class="card-text">Message : <?= nl2br(htmlspecialchars($demande['message'])) ?></p>
+                        <p class="card-text">Description du Chat : <?= htmlspecialchars($demande['description_chat']) ?></p>
+                        <p class="card-text text-muted"><em>Demande envoyée le : <?= htmlspecialchars($demande['date_demande']) ?></em></p>
+                    </div>
+                    <div class="card-footer2 text-end">
+                        <a href="?delete_demande_id=<?= $demande['id'] ?>" class="btn btn-danger m-3" onclick="return confirm('Voulez-vous vraiment supprimer cette demande ?')">Supprimer</a>
+                    </div>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </main>
-    <script>
-        const especesRaces = <?php echo json_encode($especesRaces); ?>;
-        const especeSelect = document.getElementById('espece');
-        const raceSelect = document.getElementById('race');
+            </div>
+        <?php endforeach; ?>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const especesRaces = <?php echo json_encode($especesRaces); ?>;
+    const especeSelect = document.getElementById('espece');
+    const raceSelect = document.getElementById('race');
 
-        function updateRaces() {
-            const espece = especeSelect.value;
-            raceSelect.innerHTML = '<option value="">Sélectionner une race</option>';
-            if (espece && especesRaces[espece]) {
-                especesRaces[espece].forEach(function(race) {
-                    const option = document.createElement('option');
-                    option.value = race;
-                    option.textContent = race;
-                    raceSelect.appendChild(option);
-                });
-            }
+    function updateRaces() {
+        const espece = especeSelect.value;
+        raceSelect.innerHTML = '<option value="">Sélectionner une race</option>';
+        if (espece && especesRaces[espece]) {
+            especesRaces[espece].forEach(function(race) {
+                const option = document.createElement('option');
+                option.value = race;
+                option.textContent = race;
+                raceSelect.appendChild(option);
+            });
         }
-    </script>
+    }
+</script>
 </body>
 </html>
