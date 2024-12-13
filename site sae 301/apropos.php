@@ -23,10 +23,12 @@
         </section>
 
         <section>
+            <p>
             Notre mission est simple mais essentielle : aider chaque animal à trouver son foyer idéal. Nous croyons fermement que chaque chien, chat, ou autre compagnon mérite d'être traité avec dignité, respect et amour. Que ce soit pour un chaton perdu, un chien âgé ou un petit animal maltraité, nous nous engageons à offrir un environnement sûr, accueillant et chaleureux, où ils peuvent se rétablir, s'épanouir et se préparer à une nouvelle vie.
             <br> Nous ne nous contentons pas de trouver une maison pour nos animaux, nous cherchons à créer des liens durables et harmonieux entre l'animal et sa nouvelle famille. C’est pourquoi, avant l’adoption, nous mettons en place des rencontres, des échanges et parfois des visites à domicile pour nous assurer que l'animal sera heureux et bien intégré.
             <br>Nous ne serions pas ce que nous sommes sans l'implication de nos bénévoles et de nos partenaires, qui, chaque jour, offrent leur temps et leur énergie pour aider à sauver des vies. Grâce à eux, nous pouvons offrir à nos animaux les meilleures chances d'un avenir heureux et serein.
             <br>Rejoignez-nous dans notre aventure ! Ensemble, donnons une seconde chance aux animaux et apportons de la joie et de l'amour dans leur vie. 💕🐾
+            </p>
         </section>
 
         <section id="encadrer">
