@@ -17,6 +17,6 @@ if ($animal && file_exists($animal['photo'])) {
 $stmt = $pdo->prepare("DELETE FROM animaux WHERE id = ?");
 $stmt->execute([$id]);
 
-header('Location: index.php');
+header('Location: admin.php');
 exit;
 ?>
