@@ -1,57 +1,186 @@
-.about-section {
+/* Style global pour tous les écrans */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+    color: #333;
+    text-align: justify;
+}
+
+main {
+    padding: 0 15em;
+}
+
+h2 {
+    color: #F85A2A;
     text-align: center;
-    margin-bottom: 50px;
 }
 
-.about-section .logo {
-    max-width: 150px;
-    margin: 0 auto 20px;
+/* Styles responsives */
+@media screen and (max-width: 1024px) {
+    main {
+        padding: 0 3em;
+    }
+
+    .quisommesnous {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .text-container h2 {
+        font-size: 40px;
+    }
+
+    iframe {
+        width: 90%;
+        height: 300px;
+    }
 }
 
-.location-section {
-    margin-bottom: 50px;
-    text-align: center;
+@media screen and (max-width: 768px) {
+    .image-container {
+        max-width: 100%;
+        min-width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .text-container h2 {
+        font-size: 30px;
+        text-align: left;
+    }
+
+    #encadrer {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    iframe {
+        width: 100%;
+        height: 250px;
+    }
+
+    section > div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section > div div {
+        flex: none;
+        width: 100%;
+        max-width: 200px;
+    }
 }
 
-.contact-section {
-    text-align: center;
-    margin-bottom: 50px;
+@media screen and (max-width: 480px) {
+    h2 {
+        font-size: 24px;
+        text-align: left;
+    }
+
+    .text-container p, section > div div p, section > div a, section > p {
+        font-size: 14px;
+        text-align: justify;
+    }
+
+    #encadrer {
+        text-align: justify;
+    }
 }
 
-.contact-section .contacts a {
-    display: inline-block;
-    margin: 10px;
-    font-size: 20px;
-    color: #1cbac9;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.contact-section .contacts a:hover {
-    text-decoration: underline;
-}
-
-.saviors-section {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.saviors-section .saviors {
+/* Section principale */
+.quisommesnous {
     display: flex;
-    justify-content: center;
+    align-items: flex-start; 
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.image-container {
+    flex: 1;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-container {
+    flex: 2;
+}
+
+.text-container h2 {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 50px;
+}
+
+/* Section de texte supplémentaire */
+#encadrer {
+    background-color: #FFEBE8;
+    padding: 20px;
+    border-left: 5px solid #F85A2A;
+    margin-top: 20px;
+}
+
+strong {
+    color: #F85A2A;
+}
+
+/* Section carte */
+.iframe-container {
+    text-align: center;
+}
+
+iframe {
+    border: 5px solid #1cbac9;
+    border-radius: 20px;
+}
+
+/* Section "Nos sauveurs" */
+section > div {
+    display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-.saviors-section .saviors div {
+section > div div {
     text-align: center;
-    width: 100px;
+    flex: 1 1 150px;
 }
 
-.saviors-section .saviors img {
-    width: 100px;
-    height: 100px;
+section > div div img {
+    width: 100%;
+    max-width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
+}
+
+section > div div p {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #4A4A4A;
+    text-align: center;
+}
+
+/* Section Contact */
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.contact a {
+    text-decoration: none;
+    color: #1cbac9;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.contact a:hover {
+    color: #F85A2A;
+    text-decoration: underline;
 }
