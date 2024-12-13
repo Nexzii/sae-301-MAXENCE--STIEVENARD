@@ -68,7 +68,7 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Formulaire pour ajouter un animal -->
     <div class="form-container mb-4">
-        <div class="card-body">
+        <div>
             <h2 class="card-title">Ajouter un Animal</h2>
             <form method="post" action="admin.php" >
                 <div>
@@ -145,11 +145,11 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Liste des demandes -->
     <h2 class="mt-5 mb-3">Demandes d'Adoption</h2>
-    <div class="row row-cols-1 g-4">
+    <div class="row row-cols-1 g-4 ">
         <?php foreach ($demandes as $demande): ?>
             <div class="col">
-                <div class="card">
-                    <div class="card-body">
+                <div class="mb-3 rounded-4 mbdf ">
+                    <div class="m-3">
                         <h5 class="card-title">Nom du Chat : <?= htmlspecialchars($demande['nom_chat']) ?></h5>
                         <p class="card-text">Famille : <?= htmlspecialchars($demande['nom_famille']) ?></p>
                         <p class="card-text">Email : <?= htmlspecialchars($demande['email']) ?></p>
@@ -158,8 +158,8 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
                         <p class="card-text">Description du Chat : <?= htmlspecialchars($demande['description_chat']) ?></p>
                         <p class="card-text text-muted"><em>Demande envoyée le : <?= htmlspecialchars($demande['date_demande']) ?></em></p>
                     </div>
-                    <div class="card-footer text-end">
-                        <a href="?delete_demande_id=<?= $demande['id'] ?>" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer cette demande ?')">Supprimer</a>
+                    <div class="card-footer2 text-end">
+                        <a href="?delete_demande_id=<?= $demande['id'] ?>" class="btn btn-danger m-3" onclick="return confirm('Voulez-vous vraiment supprimer cette demande ?')">Supprimer</a>
                     </div>
                 </div>
             </div>
