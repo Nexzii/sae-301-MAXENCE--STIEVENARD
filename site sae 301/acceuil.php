@@ -13,7 +13,7 @@
     <?php include 'header.php'; ?>
 
     <!-- Section Hero -->
-    <section class="hero-section">
+    <section class="hero-section mb-5">
         <div class="hero-content">
             <h1>Refuge pour animaux</h1>
             <p>Offrez un foyer chaleureux à nos animaux en attente d'adoption.</p>
@@ -38,50 +38,85 @@
     $query = $pdo->query("SELECT nom, description, photo FROM animaux WHERE espece = 'Chat'");
     $chats = $query->fetchAll(PDO::FETCH_ASSOC);
     ?>
-    <div class="carousel-section">
-    <h2 class="text-center my-4">Nos amis à l'adoption</h2>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <h2 class="carousel-title text-center mt-5 mb-4">Nos amis à l'adoption</h2>
+
+    <div id="carouselExample" class="carousel slide mb-5" data-bs-ride="carousel">
         <div class="carousel-inner">
             <?php foreach ($chats as $index => $chat): ?>
-                <div class="carousel-item <?php if ($index === 0) echo 'active'; ?>">
-                    
-                        <img src="<?= htmlspecialchars($chat['photo']) ?>" class="d-block mx-auto img-fluid" alt="<?= htmlspecialchars($chat['nom']) ?>">
-                        <h3 class="text-center mt-3"><?= htmlspecialchars($chat['nom']) ?></h3>
-                        <p class="text-center"><?= htmlspecialchars($chat['description']) ?></p>
-                    </a>
+                <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                    <div class="carousel-card">
+                        <img src="<?php echo $chat['photo']; ?>" class="d-block w-100" alt="<?php echo htmlspecialchars($chat['nom']); ?>">
+                        <h3><?php echo htmlspecialchars($chat['nom']); ?></h3>
+                        <p><?php echo htmlspecialchars($chat['description']); ?></p>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-</button>
-
-</div>
-
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Précédent</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Suivant</span>
+        </button>
     </div>
+
+    <!-- Section de contact -->
+    <section class="contact-section mb-5">
+        <div class="contact-container">
+            <div class="contact-text">
+                <h2>Vous souhaitez signaler un animal perdu, nous faire un don ou simplement adopter un de nos résidents ?</h2>
+                <p>N'attendez plus !</p>
+                <a href="contact.php" class="contact-button">Contactez-nous →</a>
+            </div>
+            <div class="contact-image">
+                <img src="recources/hamster-mignon.webp" alt="Hamster mignon">
+            </div>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const carouselElement = document.querySelector("#carouselExample");
+
+        if (carouselElement) {
+            const carousel = new bootstrap.Carousel(carouselElement);
+
+            carouselElement.addEventListener("touchstart", handleTouchStart, false);
+            carouselElement.addEventListener("touchmove", handleTouchMove, false);
+
+            let xStart = null;
+
+            function handleTouchStart(event) {
+                xStart = event.touches[0].clientX;
+            }
+
+            function handleTouchMove(event) {
+                if (!xStart) return;
+
+                const xEnd = event.touches[0].clientX;
+                const xDiff = xStart - xEnd;
+
+                if (xDiff > 50) {
+                    // Swipe gauche : suivant
+                    carousel.next();
+                } else if (xDiff < -50) {
+                    // Swipe droite : précédent
+                    carousel.prev();
+                }
+
+                xStart = null;
+            }
+        }
+    });
+</script>
+
+    <div id="news-container"></div>
+
+    <?php include 'footer.php'; ?>
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<!-- Section de contact -->
-
-<section class="contact-section">
-    <div class="contact-container">
-        <div class="contact-text">
-            <h2>Vous souhaitez signaler un animal perdu, nous faire un don ou simplement adopter un de nos résidents ?</h2>
-            <p>N'attendez plus !</p>
-            <a href="contact.php" class="contact-button">Contactez-nous →</a>
-        </div>
-        <div class="contact-image">
-        <img src="recources/hamster-mignon.webp" alt="Hamster mignon">
-        </div>
-    </div>
-</section>
-
-<?php    include 'footer.php'; ?>
