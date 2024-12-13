@@ -144,8 +144,6 @@ header nav a {
     padding: 20px;
 }
 
-/* Cartes des animaux */
-
 /* Responsivité pour mobile */
 @media (max-width: 768px) {
     .filters {

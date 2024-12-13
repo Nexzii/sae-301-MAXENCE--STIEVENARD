@@ -52,7 +52,7 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-3">
                 <label for="espece" class="form-label">Espèce</label>
                 <select id="espece" class="form-select" onchange="updateResults();">
-                    <option value="">Espèces</option>
+                    <option value="">Toutes</option>
                     <option value="Chat">Chat</option>
                     <option value="Chien">Chien</option>
                 </select>
@@ -60,13 +60,13 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-3">
                 <label for="race" class="form-label">Race</label>
                 <select id="race" class="form-select" onchange="updateResults();">
-                    <option value="">Races</option>
+                    <option value="">Toutes</option>
                 </select>
             </div>
             <div class="col-md-3">
                 <label for="sexe" class="form-label">Sexe</label>
                 <select id="sexe" class="form-select" onchange="updateResults();">
-                    <option value="">Sexe</option>
+                    <option value="">Tous</option>
                     <option value="Mâle">Mâle</option>
                     <option value="Femelle">Femelle</option>
                 </select>
@@ -74,7 +74,7 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="col-md-3">
                 <label for="age" class="form-label">Âge</label>
                 <select id="age" class="form-select" onchange="updateResults();">
-                    <option value="">Âge</option>
+                    <option value="">Tous</option>
                     <option value="1">1 an</option>
                     <option value="2">2 ans</option>
                     <option value="3">3 ans</option>
@@ -90,8 +90,6 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
                         <img src="<?= htmlspecialchars($animal['photo']) ?>" class="card-img-top" alt="Photo de <?= htmlspecialchars($animal['nom']) ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($animal['nom']) ?></h5>
-                            <p class="card-text">Âge : <?= htmlspecialchars($animal['age']) ?> an(s)</p>
-                            <p class="card-text">Lieu : <?= htmlspecialchars($animal['lieu_adoption']) ?></p>
                         </div>
                     </a>
                 </div>
@@ -105,9 +103,8 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
             const race = document.getElementById('race').value;
             const sexe = document.getElementById('sexe').value;
             const age = document.getElementById('age').value;
-            const lieuAdoption = document.getElementById('lieu_adoption').value;
 
-            const params = new URLSearchParams({ espece, race, sexe, age, lieu_adoption: lieuAdoption });
+            const params = new URLSearchParams({ espece, race, sexe, age});
 
             fetch('adoption.php?' + params.toString())
                 .then(response => response.text())
