@@ -48,8 +48,8 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php include 'header.php'; ?>
 
     <div class="container my-4">
-        <div class="row mb-4">
-            <div class="col-md-3">
+        <div class="row md-4 filters m-5">
+            <div class="col-md-2 m-2">
                 <label for="espece" class="form-label">Espèce</label>
                 <select id="espece" class="form-select" onchange="updateResults();">
                     <option value="">Toutes</option>
@@ -57,13 +57,13 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
                     <option value="Chien">Chien</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="race" class="form-label">Race</label>
                 <select id="race" class="form-select" onchange="updateResults();">
                     <option value="">Toutes</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="sexe" class="form-label">Sexe</label>
                 <select id="sexe" class="form-select" onchange="updateResults();">
                     <option value="">Tous</option>
@@ -71,7 +71,7 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
                     <option value="Femelle">Femelle</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="age" class="form-label">Âge</label>
                 <select id="age" class="form-select" onchange="updateResults();">
                     <option value="">Tous</option>
