@@ -1,0 +1,72 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+main {
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formulaire d'ajout d'animal */
+.form-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    padding: 10px;
+    border: 2px solid #1cbac9;
+    font-size: 16px;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.form-container button {
+    padding: 12px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 18px;
+    background-color: #ff6339;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.form-container button:hover {
+    background-color:#dd0303;
+}
+
+/* Liste des animaux */
+.custom-card {
+    border: none; /* Supprime les bordures */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-card .card-footer {
+    border: none; /* Supprime la bordure du haut dans le footer */
+}
+.card-body{
+    background-color: #1cbac9; 
+}
+.card-footer{
+ background-color: #1cbac9;  
+}
+:root {
+    --custom-blue: #1cbac9; /* Votre couleur personnalisée */
+    --custom-blue-rgb: 28, 186, 201; /* Valeur RGB correspondante */
+}
+.card-custom-blue {
+    background-color: var(--custom-blue); /* Couleur de fond */
+    color: white; /* Texte blanc pour un bon contraste */
+}
