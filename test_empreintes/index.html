@@ -18,29 +18,28 @@
 
         #container {
             position: relative;
-            width: 1440px; /* Fixe la largeur du container */
-            height: 900px; /* Fixe la hauteur du container */
+            width: 1400px; /* Fixe la largeur du container */
+            height: 800px; /* Fixe la hauteur du container */
         }
 
         .paw-print {
             position: absolute;
-            width: 50px;
-            height: 50px;
-            opacity: 0; /* Initialement transparent */
+            width: 40px;  /* Taille des empreintes */
+            height: 40px; /* Taille des empreintes */
+            opacity: 0;   /* Initialement transparent */
         }
 
     </style>
 </head>
 <body>
     <div id="container">
-        <!-- Path ajusté à 1440px de largeur et 900px de hauteur -->
-        <svg id="paw-svg" width="1440" height="900">
+        <!-- Path ajusté avec une courbe partant de gauche à droite -->
+        <svg id="paw-svg" width="1400" height="800">
             <path id="paw-path" 
-                d="M0,450 
-                   C300,200 600,700 720,450 
-                   S960,200 1200,450 
-                   S1440,700 1440,450"
-                fill="transparent" stroke="black" stroke-width="2" />
+                d="M0,400 
+                   C200,100 600,100 800,400
+                   S1200,700 1400,400"
+                fill="transparent" stroke="none" stroke-width="2" />
         </svg>
     </div>
 
@@ -52,9 +51,9 @@
             const path = document.querySelector('#paw-path');
             
             // Dimensions fixes du SVG
-            const svgWidth = 1440;
-            const svgHeight = 900;
-            const numPaws = 12;
+            const svgWidth = 1400;
+            const svgHeight = 800;
+            const numPaws = 20; // Nombre d'empreintes avec un écart de 80px
             const pawPrintSrc = 'img/patte.svg';  // Source de l'image des pattes
             const pawPrints = [];
 
@@ -70,8 +69,8 @@
                 pawPrint.src = pawPrintSrc;
                 pawPrint.alt = "Pattes de chat";
                 pawPrint.classList.add('paw-print');
-                pawPrint.style.left = `${x - 25}px`;  // Centrer l'image
-                pawPrint.style.top = `${y - 25}px`;   // Centrer l'image
+                pawPrint.style.left = `${x - 20}px`;  // Centrer l'image 40px
+                pawPrint.style.top = `${y - 20}px`;   // Centrer l'image 40px
                 container.appendChild(pawPrint);
                 pawPrints.push(pawPrint);
             }
@@ -95,4 +94,3 @@
     </script>
 </body>
 </html>
-
