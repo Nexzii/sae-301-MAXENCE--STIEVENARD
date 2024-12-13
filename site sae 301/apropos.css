@@ -3,12 +3,11 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #fff;
     color: #333;
-    margin: 0;
-    padding: 0;
+    text-align: justify;
 }
 
 main {
-    padding: 20px;
+    padding: 0 15em;
 }
 
 h2 {
@@ -16,11 +15,10 @@ h2 {
     text-align: center;
 }
 
-/* Style pour les écrans de taille moyenne (tablettes et petits ordinateurs) */
+/* Styles responsives */
 @media screen and (max-width: 1024px) {
     main {
-        padding-left: 3em;
-        padding-right: 3em;
+        padding: 0 3em;
     }
 
     .quisommesnous {
@@ -39,7 +37,6 @@ h2 {
     }
 }
 
-/* Style pour les petits écrans (smartphones) */
 @media screen and (max-width: 768px) {
     .image-container {
         max-width: 100%;
@@ -74,31 +71,21 @@ h2 {
     }
 }
 
-/* Style pour les très petits écrans (moins de 480px) */
 @media screen and (max-width: 480px) {
     h2 {
         font-size: 24px;
         text-align: left;
     }
 
-    .text-container p {
+    .text-container p, section > div div p, section > div a, section > p {
         font-size: 14px;
         text-align: justify;
     }
 
-    section > div div p {
-        font-size: 12px;
-    }
-
-    section > div a {
-        font-size: 14px;
-    }
-
-    section > p {
+    #encadrer {
         text-align: justify;
     }
 }
-
 
 /* Section principale */
 .quisommesnous {
@@ -115,7 +102,6 @@ h2 {
 .image-container img {
     max-width: 100%;
     height: auto;
-    
 }
 
 .text-container {
@@ -128,23 +114,23 @@ h2 {
     font-size: 50px;
 }
 
-
-/* Section de texte supplémentaire (abandons d'animaux) */
-#encadrer{
+/* Section de texte supplémentaire */
+#encadrer {
     background-color: #FFEBE8;
     padding: 20px;
     border-left: 5px solid #F85A2A;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
-strong{
-    color:#F85A2A;
+strong {
+    color: #F85A2A;
 }
 
 /* Section carte */
-.iframe-container{
+.iframe-container {
     text-align: center;
 }
+
 iframe {
     border: 5px solid #1cbac9;
     border-radius: 20px;
@@ -175,19 +161,26 @@ section > div div p {
     font-weight: bold;
     margin-top: 10px;
     color: #4A4A4A;
+    text-align: center;
 }
 
 /* Section Contact */
-section > div a {
-    display: inline-block;
-    margin: 10px;
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.contact a {
     text-decoration: none;
-    color: #F85A2A;
+    color: #1cbac9;
     font-size: 16px;
     font-weight: bold;
 }
 
-section > div a:hover {
-    color: #333;
+.contact a:hover {
+    color: #F85A2A;
     text-decoration: underline;
 }

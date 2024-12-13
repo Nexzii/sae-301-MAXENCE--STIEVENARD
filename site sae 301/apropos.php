@@ -12,7 +12,7 @@
     <main>
         <section class="quisommesnous">
             <div class="image-container">
-                <img src="./recources/déclinaison bleue-02.png" alt="Logo Amis 4 Pattes">
+                <img src="./ressources/déclinaison bleue-02.png" alt="Logo Amis 4 Pattes">
             </div>
             <div class="text-container">
                 <h2>Qui sommes-nous?</h2>
@@ -43,21 +43,20 @@
 
         <section>
             <h2>Contactez-nous</h2>
-            <div>
-                <a href="mailto:presidence.amis4pattes@gmail.com" target="_blank">✉️ Email</a>
-                <a href="https://www.instagram.com/amis_4_pattes/" target="_blank">📸 Instagram</a>
-                <a href="https://www.facebook.com/amisquartrepattes/?locale=fr_FR" target="_blank">📘 Facebook</a>
+            <div class="contact">
+                <p>✉️ Email:<a href="mailto:presidence.amis4pattes@gmail.com" target="_blank">presidence.amis4pattes@gmail.com</a></p>
+                <p>📞 Téléphone:<a href="tel:+33769488678" target="_blank">07.69.48.86.78</a></p>
             </div>
         </section>
 
         <section>
             <h2>Nos sauveurs</h2>
             <div>
-                <div><img src="recources/moi.jpg" alt="Étienne"><p>Étienne B.</p></div>
-                <div><img src="recources/moi.jpg" alt="Maxence"><p>Maxence S.</p></div>
-                <div><img src="recources/moi.jpg" alt="JB"><p>Jean-Baptiste B.</p></div>
-                <div><img src="recources/moi.jpg" alt="Romain"><p>Romain P.</p></div>
-                <div><img src="recources/moi.jpg" alt="Cloé"><p>Cloé P.</p></div>
+                <div><img src="ressources/etienne.jpg" alt="Étienne"><p>Étienne B.</p></div>
+                <div><img src="ressources/moi.jpg" alt="Maxence"><p>Maxence S.</p></div>
+                <div><img src="ressources/jb.jpg" alt="JB"><p>Jean-Baptiste B.</p></div>
+                <div><img src="ressources/romain.jpg" alt="Romain"><p>Romain P.</p></div>
+                <div><img src="ressources/cloe.jpg" alt="Cloé"><p>Cloé P.</p></div>
             </div>
         </section>
     </main>
