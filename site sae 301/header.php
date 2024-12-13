@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amis 4 Pattes</title>
+    <link rel="shortcut icon" href="ressources/favicon 48x48.png"/>
     <style>
         /* Header Styles */
         header {
