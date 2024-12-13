@@ -75,7 +75,7 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
                     <label for="nom" class="form-label"></label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required>
                 </div>
-                <div class="mb-3">
+                <div>
                     <label for="description" class="form-label"></label>
                     <textarea class="form-control" id="description" name="description" placeholder="Description" required></textarea>
                 </div>
@@ -88,32 +88,32 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="mb-3">
+                <div>
                     <label for="race" class="form-label"></label>
                     <select id="race" class="form-select" name="race" required>
                         <option value="">Sélectionner une race</option>
                     </select>
                 </div>
-                <div class="mb-3">
+                <div>
                     <label for="date_naissance" class="form-label"></label>
                     <input type="date" class="form-control" id="date_naissance" name="date_naissance" required>
                 </div>
-                <div class="mb-3">
+                <div>
                     <label for="sexe" class="form-label"></label>
                     <select id="sexe" class="form-select" name="sexe" required>
                         <option value="Mâle">Mâle</option>
                         <option value="Femelle">Femelle</option>
                     </select>
                 </div>
-                <div class="mb-3">
+                <div>
                     <label for="lieu_adoption" class="form-label"></label>
                     <input type="text" class="form-control" id="lieu_adoption" name="lieu_adoption" placeholder="Lieu d'adoption" required>
                 </div>
-                <div class="mb-3">
+                <div>
                     <label for="photo" class="form-label"></label>
                     <input type="url" class="form-control" id="photo" name="photo" placeholder="URL de la photo" required>
                 </div>
-                <div class="d-flex justify-content-center">
+                <div class="pt-5 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary d-flex justify-content-center">Ajouter</button>
                 </div>
             </form>
@@ -125,7 +125,7 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <?php foreach ($animaux as $animal): ?>
             <div class="col">
-                <div class="card h-100">
+                <div class="card h-100 custom-card">
                     <img src="<?= htmlspecialchars($animal['photo']) ?>" class="card-img-top" alt="Photo de <?= htmlspecialchars($animal['nom']) ?>">
                     <div class="card-body">
                         <h5 class="card-title">Nom : <?= htmlspecialchars($animal['nom']) ?></h5>
@@ -134,7 +134,7 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
                         <p class="card-text">Espèce : <?= htmlspecialchars($animal['espece']) ?></p>
                         <p class="card-text">Race : <?= htmlspecialchars($animal['race']) ?></p>
                     </div>
-                    <div class="card-footer d-flex justify-content-between">
+                    <div class="card-footer d-flex justify-content-between card-custom-blue">
                         <a href="./uploads/edit.php?id=<?= $animal['id'] ?>" class="btn btn-warning">Modifier</a>
                         <a href="delete.php?id=<?= $animal['id'] ?>" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer cet animal ?')">Supprimer</a>
                     </div>
