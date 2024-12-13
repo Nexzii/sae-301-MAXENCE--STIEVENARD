@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation des empreintes de chat</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        #container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+        #paw-print {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- Cercle central de référence pour les empreintes -->
+        <svg width="500px" height="500px">
+            <circle cx="250" cy="250" r="200" fill="transparent" stroke="none" />
+        </svg>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Paramètres du cercle
+            const radius = 200;
+            const centerX = 250;
+            const centerY = 250;
+            const numPaws = 12;  // Nombre d'empreintes de chat autour du cercle
+            const pawPrintSrc = 'img/patte.svg';  // Source de l'image des pattes
+
+            // Récupérer le conteneur
+            const container = document.getElementById('container');
+
+            // Créer les clones des empreintes et les positionner autour du cercle
+            for (let i = 0; i < numPaws; i++) {
+                const angle = (i / numPaws) * 2 * Math.PI;  // Calcul de l'angle pour chaque empreinte
+                const x = centerX + radius * Math.cos(angle);  // Calcul de la position X sur le cercle
+                const y = centerY + radius * Math.sin(angle);  // Calcul de la position Y sur le cercle
+
+                const pawPrint = document.createElement('img');
+                pawPrint.src = pawPrintSrc;
+                pawPrint.alt = "Pattes de chat";
+                pawPrint.id = 'paw-print';
+                pawPrint.style.left = `${x - 25}px`;  // Centrer l'image
+                pawPrint.style.top = `${y - 25}px`;   // Centrer l'image
+                container.appendChild(pawPrint);
+            }
+
+            // Animer les empreintes autour du cercle
+            const pawPrints = document.querySelectorAll('#paw-print');
+            gsap.to(pawPrints, {
+                duration: 10,  // Durée de l'animation (en secondes)
+                rotation: 360,  // Rotation complète du cercle
+                repeat: -1,  // Répéter à l'infini
+                ease: "linear",  // Mouvement fluide
+                stagger: 0.1,  // Délais d'animation entre chaque empreinte
+                transformOrigin: "50% 50%",  // Définir l'origine de transformation au centre
+                motionPath: {
+                    path: container.querySelector('svg circle'),
+                    align: container.querySelector('svg circle'),
+                    autoRotate: true
+                }
+            });
+        });
+    </script>
+</body>
+</html>
