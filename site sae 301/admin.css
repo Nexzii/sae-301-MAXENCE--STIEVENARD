@@ -47,26 +47,28 @@ h1, h2 {
     background-color:#dd0303;
 }
 
-/* Liste des animaux */
 .custom-card {
-    border: none; /* Supprime les bordures */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px !important;
+    overflow: hidden; /* Assure que les enfants respectent le radius */
 }
 
+.custom-card,
 .custom-card .card-footer {
-    border: none; /* Supprime la bordure du haut dans le footer */
+    border: none;
+    background-color: #1cbac9; 
+    color: white;
+    border-radius: 0; /* Laissez ces éléments sans bord arrondi pour éviter les doublons */
 }
+
 .card-body{
     background-color: #1cbac9; 
 }
-.card-footer{
- background-color: #1cbac9;  
+
+.card-footer2{
+    border-radius: 20px !important;
+    overflow: hidden; /* Assure que les enfants respectent le radius */
 }
-:root {
-    --custom-blue: #1cbac9; /* Votre couleur personnalisée */
-    --custom-blue-rgb: 28, 186, 201; /* Valeur RGB correspondante */
-}
-.card-custom-blue {
-    background-color: var(--custom-blue); /* Couleur de fond */
-    color: white; /* Texte blanc pour un bon contraste */
+.mbdf{
+    border: 2px solid #1cbac9;
 }
