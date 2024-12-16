@@ -48,8 +48,8 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
     <?php include 'header.php'; ?>
 
     <div class="container my-4">
-        <div class="row md-4 filters m-5">
-            <div class="col-md-2 m-2">
+        <div class="row md-5 filters m-5 row justify-content-center">
+            <div class="col-md-2 m-2 text-center">
                 <label for="espece" class="form-label">Espèce</label>
                 <select id="espece" class="form-select" onchange="updateResults();">
                     <option value="">Toutes</option>
@@ -57,13 +57,13 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
                     <option value="Chien">Chien</option>
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 m-2 text-center">
                 <label for="race" class="form-label">Race</label>
                 <select id="race" class="form-select" onchange="updateResults();">
                     <option value="">Toutes</option>
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 m-2 text-center">
                 <label for="sexe" class="form-label">Sexe</label>
                 <select id="sexe" class="form-select" onchange="updateResults();">
                     <option value="">Tous</option>
@@ -71,7 +71,7 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
                     <option value="Femelle">Femelle</option>
                 </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 m-2 text-center">
                 <label for="age" class="form-label">Âge</label>
                 <select id="age" class="form-select" onchange="updateResults();">
                     <option value="">Tous</option>
@@ -89,7 +89,7 @@ $animaux = $query->fetchAll(PDO::FETCH_ASSOC);
                     <a href="chat.php?id=<?= $animal['id'] ?>" class="card h-100 text-decoration-none">
                         <img src="<?= htmlspecialchars($animal['photo']) ?>" class="card-img-top" alt="Photo de <?= htmlspecialchars($animal['nom']) ?>">
                         <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($animal['nom']) ?></h5>
+                            <h5 class="card-title text-center"><?= htmlspecialchars($animal['nom']) ?></h5>
                         </div>
                     </a>
                 </div>
