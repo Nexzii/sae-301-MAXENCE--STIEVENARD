@@ -72,3 +72,6 @@ h1, h2 {
 .mbdf{
     border: 2px solid #1cbac9;
 }
+ .form-control , .form-select{
+    margin-bottom: 15px !important; /* Force l'écart entre les champs */
+}

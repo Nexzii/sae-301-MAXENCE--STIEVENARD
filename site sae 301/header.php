@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amis 4 Pattes</title>
-    <link rel="shortcut icon" href="ressources/favicon 48x48.png"/>
     <style>
         /* Header Styles */
         header {
@@ -110,32 +109,30 @@
     </header>
 
     <script>
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
         // JavaScript for responsive hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const mobileNav = document.querySelector('.nav-links.mobile');
 
         hamburger.addEventListener('click', () => {
             const isActive = mobileNav.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isActive);
+            hamburger.setAttribute('aria-expanded', isActive.toString());
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links.mobile a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
         });
 
         // Close menu if clicked outside
         document.addEventListener('click', (event) => {
             if (!hamburger.contains(event.target) && !mobileNav.contains(event.target)) {
                 mobileNav.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', false);
+                hamburger.setAttribute('aria-expanded', 'false');
             }
         });
-        document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const navMenu = document.querySelector('header nav');
-
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-});
-
     </script>
 </body>
 </html>

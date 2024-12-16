@@ -1,16 +1,37 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+/*espacement des sections*/
+/* Section principale */
+section {
+    margin-bottom: 60px; /* Ajoute un espacement entre les sections */
 }
 
-/* Header */
-header {
-    background-color: #00bcd4;
-    padding: 10px 20px;
+/* Titre "Nos amis à l'adoption" */
+.carousel-title {
+    margin-bottom: 40px; /* Augmente l'espacement sous le titre */
 }
+
+/* Carousel */
+.carousel {
+    margin-top: 20px; /* Ajoute un petit espace au-dessus du carousel */
+    margin-bottom: 40px; /* Ajoute un espace sous le carousel */
+}
+
+/* Section Hero */
+.hero-section {
+    margin-bottom: 60px; /* Espace supplémentaire sous la section Hero */
+}
+
+/* Section de contact */
+.contact-section {
+    margin-top: 40px; /* Ajoute un espace au-dessus de la section de contact */
+    margin-bottom: 60px; /* Ajoute un espace sous la section de contact */
+}
+
+/* Pied de page */
+footer {
+    margin-top: 60px; /* Espace supplémentaire avant le pied de page */
+}
+
+
 
 .navbar {
     display: flex;
@@ -80,122 +101,48 @@ header {
 }
 
 /* Carousel Section */
-.carousel-section {
-    background-color: #f9f9f9;
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 500px;
-    text-align: center;
-}
-
-.carousel-section h2 {
-    font-family: 'Isidora Soft Alt', sans-serif;
-    font-size: 2rem;
-    color: #FF6F61;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.carousel-card {
-    text-align: center;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 15px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 250px;
-    margin: auto;
-}
-
-.carousel-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.carousel-title {
+    font-size: 2rem; /* Taille de la police */
+    font-weight: bold; /* Met le texte en gras */
+    color: #FF6F61; /* Couleur personnalisée (rouge/orange) */
+    margin-bottom: 20px; /* Espacement en bas du texte */
+    text-transform: capitalize; /* Met en majuscule la première lettre de chaque mot */
 }
 
 .carousel-card img {
-    border-radius: 30px;
-    border-radius: 10px;
-    max-height: 180px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    width: 100%;
+    max-width: 300px; /* Limite la largeur maximale de l'image */
+    max-height: 200px; /* Limite la hauteur maximale de l'image */
+    width: auto; /* Ajuste automatiquement la largeur si la hauteur est limitée */
+    height: auto; /* Ajuste automatiquement la hauteur si la largeur est limitée */
+    border-radius: 10px; /* Coins arrondis */
+    object-fit: cover; /* Recadre l'image pour s'adapter parfaitement au conteneur */
+    margin: 0 auto; /* Centre l'image horizontalement */
+    display: block; /* Empêche tout comportement inline de l'image */
 }
-
 .carousel-card h3 {
-    font-family: 'Isidora Soft Alt', sans-serif;
-    font-size: 1.4rem;
-    color: #FF6F61;
+    font-size: 1.2rem;
     font-weight: bold;
+    color: #333; /* Couleur plus sobre */
+    text-align: center;
     margin-top: 10px;
 }
 
 .carousel-card p {
-    font-size: 1rem;
-    color: #555;
+    font-size: 0.9rem;
+    color: #555; /* Couleur plus discrète */
+    text-align: center;
     margin-top: 5px;
-}
-
-.carousel-item.active .carousel-card {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1; /* S'assurer qu'ils sont devant les autres éléments */
-    width: 40px;
-    height: 40px;
-}
-
-.carousel-control-prev {
-    left: 10px; /* Ajustez cette valeur pour éloigner ou rapprocher du bord */
-}
-
-.carousel-control-next {
-    right: 10px; /* Ajustez cette valeur pour éloigner ou rapprocher du bord */
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    position: absolute;
-    top: 50%; /* Centre verticalement */
-    transform: translateY(-50%); /* Ajuste le décalage vertical */
-    width: 40px;
-    height: 40px;
-    z-index: 1; /* S'assurer qu'ils sont visibles */
-    cursor: pointer;
-}
-
-.carousel-control-prev {
-    left: 10px; /* Distance du côté gauche */
-}
-
-.carousel-control-next {
-    right: 10px; /* Distance du côté droit */
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    display: inline-block;
-    background-color: #FF6F61;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-size: 50%; /* Ajuste la taille de l'icône */
+    background-color: red; /* Couleur rouge pour les flèches */
+    border-radius: 50%; /* Facultatif : coins arrondis */
+    width: 20px; /* Taille par défaut */
+    height: 20px;
+    background-size: 100%; /* Assure que l'icône est bien visible */
     background-position: center;
     background-repeat: no-repeat;
-}
-
-.carousel-control-prev:hover .carousel-control-prev-icon,
-.carousel-control-next:hover .carousel-control-next-icon {
-    background-color: #e65a4f;
 }
 
 
@@ -258,9 +205,8 @@ header {
 }
 
 .contact-image img {
-    border-radius: 30px;
-    width: 100%;
     border-radius: 20px;
+    width: 100%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
