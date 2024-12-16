@@ -96,9 +96,9 @@
             <span></span>
         </div>
         <nav class="nav-links desktop">
-            <a href="acceuil.php">Accueil</a>
-            <a href="adoption.php">Adoption</a>
-            <a href="apropos.php">À propos</a>
+            <a href="/site sae 301/acceuil.php">Accueil</a>
+            <a href="/site sae 301/adoption.php">Adoption</a>
+            <a href="/site sae 301/apropos.php">À propos</a>
         </nav>
         <nav class="nav-links mobile">
             <a href="acceuil.php">Accueil</a>

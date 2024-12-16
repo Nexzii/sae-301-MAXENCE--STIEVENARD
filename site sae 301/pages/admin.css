@@ -1,0 +1,74 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+main {
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formulaire d'ajout d'animal */
+.form-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    padding: 10px;
+    border: 2px solid #1cbac9;
+    font-size: 16px;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.form-container button {
+    padding: 12px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 18px;
+    background-color: #ff6339;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    
+}
+
+.form-container button:hover {
+    background-color:#dd0303;
+}
+
+.custom-card {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px !important;
+    overflow: hidden; /* Assure que les enfants respectent le radius */
+}
+
+.custom-card,
+.custom-card .card-footer {
+    border: none;
+    background-color: #1cbac9; 
+    color: white;
+    border-radius: 0; /* Laissez ces éléments sans bord arrondi pour éviter les doublons */
+}
+
+.card-body{
+    background-color: #1cbac9; 
+}
+
+.card-footer2{
+    border-radius: 20px !important;
+    overflow: hidden; /* Assure que les enfants respectent le radius */
+}
+.mbdf{
+    border: 2px solid #1cbac9;
+}
