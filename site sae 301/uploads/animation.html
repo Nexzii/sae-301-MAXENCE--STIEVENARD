@@ -12,14 +12,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
             overflow: hidden; /* Empêche le débordement */
         }
 
         #container {
             position: relative;
-            width: 1400px; /* Fixe la largeur du container */
-            height: 800px; /* Fixe la hauteur du container */
+            width: 1536px; /* Fixe la largeur du container */
+            height: 900px; /* Fixe la hauteur du container */
         }
 
         .paw-print {
@@ -34,9 +33,9 @@
 <body>
     <div id="container">
         <!-- Path ajusté avec une courbe partant de gauche à droite -->
-        <svg id="paw-svg" width="1400" height="800">
+        <svg id="paw-svg" width="1536" height="900">
             <path id="paw-path" 
-                d="M 0 0 Q 412 41 254 113 Q 85 183 702 444 Q 1278 651 3 764"
+                d="M 0 0 Q 412 41 254 113 Q 85 183 702 444 Q 1278 651 -300 764"
                 fill="transparent" stroke="none"/>
         </svg>
     </div>
@@ -49,7 +48,7 @@
             const path = document.querySelector('#paw-path');
             
             const numPaws = 40; // Nombre d'empreintes
-            const pawPrintSrc = 'img/patte.svg';  // Source de l'image des pattes
+            const pawPrintSrc = '../ressources/patte.svg';  // Source de l'image des pattes
             const pawPrints = [];
 
             const length = path.getTotalLength();  // Longueur totale du path

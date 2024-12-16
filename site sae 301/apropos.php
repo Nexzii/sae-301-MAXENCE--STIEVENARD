@@ -7,8 +7,10 @@
     <title>À Propos - Amis 4 Pattes</title>
 </head>
 <body>
+    <div id="animation-container">
+        <iframe src="uploads/animation.html" style="position: absolute; width: 100%; height: 100%; border: none;"></iframe>
+    </div>
     <?php include 'header.php'; ?>
-
     <main>
         <section class="quisommesnous">
             <div class="image-container">
