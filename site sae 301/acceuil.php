@@ -13,20 +13,28 @@
     <?php include 'header.php'; ?>
 
     <!-- Section Hero -->
-    <section class="hero-section mb-5">
-        <div class="hero-content">
-            <h1>Refuge pour animaux</h1>
-            <p>Offrez un foyer chaleureux à nos animaux en attente d'adoption.</p>
-        </div>
-        <a href="apropos.php" class="hero-button">
-            <span>A propos →</span>
-            <p>En apprendre plus<br>sur nous</p>
-            <div class="button-deco">
-                <div class="circle"></div>
-                <div class="circle"></div>
-                <div class="circle"></div>
+    <div class="hero-section">
+    <div class="hero-content">
+        <h1>Refuge pour animaux</h1>
+        <p>Donnez une seconde chance à nos amis à quatre pattes.</p>
+        <a href="#" class="hero-button">
+            <div class="photo-group">
+                <div class="photo-circle">
+                    <img src="ressources/jb.jpg" alt="Photo 1">
+                </div>
+                <div class="photo-circle">
+                    <img src="ressources/romain.jpg" alt="Photo 2">
+                </div>
+                <div class="photo-circle">
+                    <img src="ressources/etienne.jpg" alt="Photo 3">
+                </div>
             </div>
+            <span>À propos →</span>
+            <small>En apprendre plus sur nous</small>
         </a>
+    </div>
+</div>
+
     </section>
 
     <!-- Section Carousel -->
@@ -68,7 +76,7 @@
             <div class="contact-text">
                 <h2>Vous souhaitez signaler un animal perdu, nous faire un don ou simplement adopter un de nos résidents ?</h2>
                 <p>N'attendez plus !</p>
-                <a href="contact.php" class="contact-button">Contactez-nous →</a>
+                <a href="apropos.php" class="contact-button">Contactez-nous →</a>
             </div>
             <div class="contact-image">
                 <img src="recources/hamster-mignon.webp" alt="Hamster mignon">
