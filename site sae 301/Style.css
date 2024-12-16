@@ -84,14 +84,8 @@ header nav a {
 
 /* Fond bleu pour la section des filtres */
 .filters {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 15px;
     background-color: #1cbac9;
     border-radius: 50px;
-    margin: 70px auto;
-    width: fit-content;
 }
 
 /* Boutons de filtres */
@@ -225,3 +219,13 @@ footer a {
 }
 
 
+/* JE l'AI PRIS DE ADMIN.CSS  etenienne*/
+.custom-card {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px !important;
+    overflow: hidden; /* Assure que les enfants respectent le radius */
+}
+
+.card-body{
+    background-color: #1cbac9; 
+}

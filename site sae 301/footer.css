@@ -19,6 +19,10 @@
     margin: 0 auto;
 }
 
+.footer-left {
+    text-align: left; /* Align text to the left */
+}
+
 .footer-left h3,
 .footer-right h3 {
     font-size: 1.2rem;
@@ -47,20 +51,45 @@
 }
 
 .footer-right {
-    text-align: left;
+    text-align: center; /* Centre le texte */
+    display: flex;
+    flex-direction: column; /* Positionne "Contact" et les icônes en colonne */
+    align-items: center; /* Centre horizontalement les éléments */
 }
 
 .footer-icons {
     display: flex;
-    gap: 15px;
+    flex-direction: row; /* Les icônes restent en ligne */
+    justify-content: center; /* Centre les icônes */
+    gap: 20px; /* Ajoute de l'espace entre les icônes */
+    margin-top: 10px; /* Ajoute de l'espace entre "Contact" et les icônes */
 }
 
-.footer-icons a img {
-    width: 24px;
-    height: 24px;
+
+.footer-right h3 {
+    margin-bottom: 10px; /* Ajoute un espace sous "Contact" */
+}
+
+
+
+.footer-icons a {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Ajoute de l'espace entre l'icône et le texte */
+    color: white; /* Couleur du texte et des icônes */
+    text-decoration: none; /* Supprime le soulignement */
+    font-weight: bold;
+}
+
+.footer-icons a:hover {
+    color: #ff9800; /* Couleur au survol */
+}
+
+.footer-icons a i {
+    font-size: 1.5rem; /* Taille des icônes */
     transition: transform 0.3s ease;
 }
 
-.footer-icons a img:hover {
-    transform: scale(1.1);
+.footer-icons a i:hover {
+    transform: scale(1.2); /* Agrandissement au survol */
 }

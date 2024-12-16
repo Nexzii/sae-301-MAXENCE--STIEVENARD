@@ -1,16 +1,40 @@
-/* General Styles */
+/*espacement des sections*/
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+
 }
 
-/* Header */
-header {
-    background-color: #00bcd4;
-    padding: 10px 20px;
+/* Titre "Nos amis à l'adoption" */
+.carousel-title {
+    margin-bottom: 40px; /* Augmente l'espacement sous le titre */
 }
+
+/* Carousel */
+.carousel {
+    margin-top: 20px; /* Ajoute un petit espace au-dessus du carousel */
+    margin-bottom: 40px; /* Ajoute un espace sous le carousel */
+}
+
+/* Section Hero */
+.hero-section {
+    margin-bottom: 60px; /* Espace supplémentaire sous la section Hero */
+}
+
+/* Section de contact */
+.contact-section {
+    margin-top: 40px; /* Ajoute un espace au-dessus de la section de contact */
+    margin-bottom: 60px; /* Ajoute un espace sous la section de contact */
+}
+
+/* Pied de page */
+footer {
+    margin-top: 60px; /* Espace supplémentaire avant le pied de page */
+}
+
+
 
 .navbar {
     display: flex;
@@ -41,161 +65,202 @@ header {
 /* Hero Section */
 .hero-section {
     position: relative;
-    width: 90%;
+    width: 100%;
     height: 50vh;
-    background: url("recources/esperance-vie-chiens-chiot-golden-retriever.jpg") no-repeat center center/cover;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)), 
+                url('recources/esperance-vie-chiens-chiot-golden-retriever.jpg') no-repeat center center/cover;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     margin: 40px auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.hero-content {
-    max-width: 40%;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: left;
-}
 
 .hero-button {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: #FF9800;
-    color: #fff;
-    padding: 15px 25px;
+    background: #FF6F3C;
+    color: white;
+    padding: 15px 30px;
     text-decoration: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacement entre les photos et le texte */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
 }
 
 .hero-button:hover {
-    background-color: #e68a00;
+    background: #E05B2E;
     transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-button .photo-group {
+    position: relative;
+    display: flex;
+    gap: -10px; /* Chevauchement des cercles */
+}
+
+.photo-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+    background-color: #eee;
+}
+
+.photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-button span {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.hero-button small {
+    display: block;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+}
+.hero-content h1 {
+    color: white; /* Met le titre en blanc */
+    font-size: 3rem; /* Ajustez la taille si nécessaire */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    color: white; /* Met le paragraphe en blanc */
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+.hero-button .photo-group {
+    position: relative;
+    display: flex;
+    gap: -15px; /* Chevauchement des cercles */
+}
+
+.photo-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+    background-color: #eee;
+    z-index: 1;
+}
+
+.photo-circle:nth-child(2) {
+    z-index: 2; /* Place la deuxième image au-dessus de la première */
+}
+
+.photo-circle:nth-child(3) {
+    z-index: 3; /* Place la troisième image au-dessus des deux autres */
+}
+/* Bouton Responsive */
+@media (max-width: 768px) {
+    .hero-button {
+        position: relative; /* Ne fixe plus la position */
+        bottom: auto;
+        right: auto;
+        margin: 20px auto; /* Centre le bouton horizontalement */
+        padding: 10px 20px; /* Réduit l'espacement interne */
+        flex-direction: column; /* Passe les éléments en colonne */
+        gap: 10px; /* Ajuste l'espacement entre les cercles et le texte */
+    }
+
+    .photo-circle {
+        width: 30px; /* Réduit la taille des cercles */
+        height: 30px;
+    }
+
+    .hero-button span {
+        font-size: 0.9rem; /* Réduit la taille du texte */
+    }
+
+    .hero-button small {
+        font-size: 0.8rem; /* Texte secondaire plus petit */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-button {
+        padding: 8px 15px; /* Réduit davantage les marges */
+        border-radius: 20px; /* Ajuste les bords */
+    }
+
+    .photo-circle {
+        width: 25px;
+        height: 25px;
+    }
+
+    .hero-button span {
+        font-size: 0.8rem;
+    }
+
+    .hero-button small {
+        font-size: 0.7rem;
+    }
 }
 
 /* Carousel Section */
-.carousel-section {
-    background-color: #f9f9f9;
-    padding: 30px 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    max-width: 500px;
-    text-align: center;
-}
-
-.carousel-section h2 {
-    font-family: 'Isidora Soft Alt', sans-serif;
-    font-size: 2rem;
-    color: #FF6F61;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.carousel-card {
-    text-align: center;
-    padding: 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 15px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 250px;
-    margin: auto;
-}
-
-.carousel-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.carousel-title {
+    font-size: 2rem; /* Taille de la police */
+    font-weight: bold; /* Met le texte en gras */
+    color: #FF6F61; /* Couleur personnalisée (rouge/orange) */
+    margin-bottom: 20px; /* Espacement en bas du texte */
+    text-transform: capitalize; /* Met en majuscule la première lettre de chaque mot */
 }
 
 .carousel-card img {
-    border-radius: 30px;
-    border-radius: 10px;
-    max-height: 180px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    width: 100%;
+    max-width: 300px; /* Limite la largeur maximale de l'image */
+    max-height: 200px; /* Limite la hauteur maximale de l'image */
+    width: auto; /* Ajuste automatiquement la largeur si la hauteur est limitée */
+    height: auto; /* Ajuste automatiquement la hauteur si la largeur est limitée */
+    border-radius: 10px; /* Coins arrondis */
+    object-fit: cover; /* Recadre l'image pour s'adapter parfaitement au conteneur */
+    margin: 0 auto; /* Centre l'image horizontalement */
+    display: block; /* Empêche tout comportement inline de l'image */
 }
-
 .carousel-card h3 {
-    font-family: 'Isidora Soft Alt', sans-serif;
-    font-size: 1.4rem;
-    color: #FF6F61;
+    font-size: 1.2rem;
     font-weight: bold;
+    color: #333; /* Couleur plus sobre */
+    text-align: center;
     margin-top: 10px;
 }
 
 .carousel-card p {
-    font-size: 1rem;
-    color: #555;
+    font-size: 0.9rem;
+    color: #555; /* Couleur plus discrète */
+    text-align: center;
     margin-top: 5px;
-}
-
-.carousel-item.active .carousel-card {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1; /* S'assurer qu'ils sont devant les autres éléments */
-    width: 40px;
-    height: 40px;
-}
-
-.carousel-control-prev {
-    left: 10px; /* Ajustez cette valeur pour éloigner ou rapprocher du bord */
-}
-
-.carousel-control-next {
-    right: 10px; /* Ajustez cette valeur pour éloigner ou rapprocher du bord */
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    position: absolute;
-    top: 50%; /* Centre verticalement */
-    transform: translateY(-50%); /* Ajuste le décalage vertical */
-    width: 40px;
-    height: 40px;
-    z-index: 1; /* S'assurer qu'ils sont visibles */
-    cursor: pointer;
-}
-
-.carousel-control-prev {
-    left: 10px; /* Distance du côté gauche */
-}
-
-.carousel-control-next {
-    right: 10px; /* Distance du côté droit */
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    display: inline-block;
-    background-color: #FF6F61;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-size: 50%; /* Ajuste la taille de l'icône */
+    background-color: red; /* Couleur rouge pour les flèches */
+    border-radius: 50%; /* Facultatif : coins arrondis */
+    width: 20px; /* Taille par défaut */
+    height: 20px;
+    background-size: 100%; /* Assure que l'icône est bien visible */
     background-position: center;
     background-repeat: no-repeat;
-}
-
-.carousel-control-prev:hover .carousel-control-prev-icon,
-.carousel-control-next:hover .carousel-control-next-icon {
-    background-color: #e65a4f;
 }
 
 
@@ -258,9 +323,8 @@ header {
 }
 
 .contact-image img {
-    border-radius: 30px;
-    width: 100%;
     border-radius: 20px;
+    width: 100%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 

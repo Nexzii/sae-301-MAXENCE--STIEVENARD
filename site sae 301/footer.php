@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="footer.css">
-    <title>Footer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <title>Footer en forme de Chat</title>
 </head>
 <body>
 <!-- Footer -->
@@ -19,16 +21,23 @@
             </ul>
         </div>
         <div class="footer-right">
-            <h3>Contact</h3>
-            <div class="footer-icons">
-                <a href="mailto:contact@amis4pattes.com"><img src="recources/email-icon.svg" alt="Email"></a>
-                <a href="https://www.instagram.com"><img src="recources/instagram-icon.svg" alt="Instagram"></a>
-                <a href="https://www.facebook.com"><img src="recources/facebook-icon.svg" alt="Facebook"></a>
-            </div>
-        </div>
+    <h3>Contact</h3>
+    <div class="footer-icons">
+        <a href="mailto:example@example.com">
+            <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://instagram.com" target="_blank">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://facebook.com" target="_blank">
+            <i class="fab fa-facebook"></i> Facebook
+        </a>
+    </div>
+</div>
+
+
     </div>
 </footer>
-        <p>© 2024 Amis 4 Pattes. Tous droits réservés.</p>
-    </footer>
+
 </body>
 </html>
