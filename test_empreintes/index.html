@@ -24,8 +24,8 @@
 
         .paw-print {
             position: absolute;
-            width: 40px;  /* Taille des empreintes */
-            height: 40px; /* Taille des empreintes */
+            width: 30px;  /* Taille des empreintes */
+            height: 30px; /* Taille des empreintes */
             opacity: 0;   /* Initialement transparent */
         }
 
@@ -36,10 +36,8 @@
         <!-- Path ajusté avec une courbe partant de gauche à droite -->
         <svg id="paw-svg" width="1400" height="800">
             <path id="paw-path" 
-                d="M0,400 
-                   C200,100 600,100 800,400
-                   S1200,700 1400,400"
-                fill="transparent" stroke="none" stroke-width="2" />
+                d="M 0 0 Q 412 41 254 113 Q 85 183 702 444 Q 1278 651 3 764"
+                fill="transparent" stroke="none"/>
         </svg>
     </div>
 
@@ -50,10 +48,7 @@
             const svg = document.getElementById('paw-svg');
             const path = document.querySelector('#paw-path');
             
-            // Dimensions fixes du SVG
-            const svgWidth = 1400;
-            const svgHeight = 800;
-            const numPaws = 20; // Nombre d'empreintes avec un écart de 80px
+            const numPaws = 40; // Nombre d'empreintes
             const pawPrintSrc = 'img/patte.svg';  // Source de l'image des pattes
             const pawPrints = [];
 
@@ -62,8 +57,13 @@
             // Créer et positionner les empreintes autour du path
             for (let i = 0; i < numPaws; i++) {
                 const position = path.getPointAtLength((i / numPaws) * length);
+                const nextPosition = path.getPointAtLength(((i + 1) / numPaws) * length);
+
                 const x = position.x;
                 const y = position.y;
+
+                // Calculer l'angle de tangente entre ce point et le suivant
+                const angle = Math.atan2(nextPosition.y - y, nextPosition.x - x) * (180 / Math.PI)+ 90;
 
                 const pawPrint = document.createElement('img');
                 pawPrint.src = pawPrintSrc;
@@ -71,6 +71,7 @@
                 pawPrint.classList.add('paw-print');
                 pawPrint.style.left = `${x - 20}px`;  // Centrer l'image 40px
                 pawPrint.style.top = `${y - 20}px`;   // Centrer l'image 40px
+                pawPrint.style.transform = `rotate(${angle}deg)`; // Orienter l'empreinte
                 container.appendChild(pawPrint);
                 pawPrints.push(pawPrint);
             }
@@ -91,6 +92,7 @@
                     delay: 0.5 // Temps d'attente après apparition
                 });
         });
+
     </script>
 </body>
 </html>
