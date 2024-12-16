@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation des empreintes de chat</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Empêche le débordement */
+        }
+
+        #container {
+            position: relative;
+            width: 1536px; /* Fixe la largeur du container */
+            height: 900px; /* Fixe la hauteur du container */
+        }
+
+        .paw-print {
+            position: absolute;
+            width: 30px;  /* Taille des empreintes */
+            height: 30px; /* Taille des empreintes */
+            opacity: 0;   /* Initialement transparent */
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <!-- Path ajusté avec une courbe partant de gauche à droite -->
+        <svg id="paw-svg" width="1536" height="900">
+            <path id="paw-path" 
+                d="M 0 0 Q 412 41 254 113 Q 85 183 702 444 Q 1278 651 -300 764"
+                fill="transparent" stroke="none"/>
+        </svg>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('container');
+            const svg = document.getElementById('paw-svg');
+            const path = document.querySelector('#paw-path');
+            
+            const numPaws = 40; // Nombre d'empreintes
+            const pawPrintSrc = '../ressources/patte.svg';  // Source de l'image des pattes
+            const pawPrints = [];
+
+            const length = path.getTotalLength();  // Longueur totale du path
+
+            // Créer et positionner les empreintes autour du path
+            for (let i = 0; i < numPaws; i++) {
+                const position = path.getPointAtLength((i / numPaws) * length);
+                const nextPosition = path.getPointAtLength(((i + 1) / numPaws) * length);
+
+                const x = position.x;
+                const y = position.y;
+
+                // Calculer l'angle de tangente entre ce point et le suivant
+                const angle = Math.atan2(nextPosition.y - y, nextPosition.x - x) * (180 / Math.PI)+ 90;
+
+                const pawPrint = document.createElement('img');
+                pawPrint.src = pawPrintSrc;
+                pawPrint.alt = "Pattes de chat";
+                pawPrint.classList.add('paw-print');
+                pawPrint.style.left = `${x - 20}px`;  // Centrer l'image 40px
+                pawPrint.style.top = `${y - 20}px`;   // Centrer l'image 40px
+                pawPrint.style.transform = `rotate(${angle}deg)`; // Orienter l'empreinte
+                container.appendChild(pawPrint);
+                pawPrints.push(pawPrint);
+            }
+
+            // Animer l'opacité des empreintes autour du path
+            gsap.timeline({ repeat: -1 })
+                .to(pawPrints, {
+                    duration: 0.5, // Apparition
+                    opacity: 1,
+                    ease: "power1.inOut",
+                    stagger: 0.2 // Décalage automatique entre chaque empreinte
+                })
+                .to(pawPrints, {
+                    duration: 0.5, // Disparition
+                    opacity: 0,
+                    ease: "power1.inOut",
+                    stagger: 0.2, // Même décalage pour la disparition
+                    delay: 0.5 // Temps d'attente après apparition
+                });
+        });
+
+    </script>
+</body>
+</html>
