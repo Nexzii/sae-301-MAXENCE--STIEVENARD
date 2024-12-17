@@ -16,7 +16,7 @@
             <h3>Amis 4 pattes</h3>
             <p>3 All. du Grenouillet, 63510 Aulnat</p>
             <ul>
-                <li><a href="../site sae 301/pages/auth.php">Admin</a></li>
+                <li><a href="pages/auth.php">Admin</a></li>
                 <li><a href="mentions-legales.php">Mentions légales</a></li>
             </ul>
         </div>

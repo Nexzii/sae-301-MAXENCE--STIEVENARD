@@ -1,7 +1,16 @@
 /* Général */
 body {
     font-family: Arial, sans-serif;
+}
 
+h3 {
+    font-size: 2em;            /* Taille du texte plus grande */
+    color: #ff6339;            /* Couleur orange */
+    font-weight: bold;         /* Texte en gras */
+    text-align: center;        /* Centrer le texte horizontalement */
+    margin-top: 40px;          /* Marge en haut pour séparer des éléments précédents */
+    margin-bottom: 30px;       /* Marge en bas pour espacer le formulaire */
+    text-transform: uppercase; /* Mettre le texte en majuscules */
 }
 
 /* Section principale */
@@ -22,20 +31,23 @@ main {
     margin-bottom: 30px;
 }
 
+/* Section de l'image */
 .animal-info .image {
-    flex: 1 1 40%;
+    flex: 1 1 40%;  /* Contrôle la largeur de l'image */
     max-width: 40%;
     display: flex;
     justify-content: center;
+    padding-right: 20px; /* Ajout d'un espace entre l'image et les détails */
 }
 
 .animal-info .image img {
-    max-width: 100%;
+    width: 80%;  /* Réduire la taille de l'image */
     height: auto;
     border-radius: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Section des détails */
 .animal-info .details {
     flex: 1 1 60%;
     max-width: 60%;
@@ -45,9 +57,13 @@ main {
 }
 
 .animal-info .details h1 {
-    font-size: 2em;
+    font-size: 3em; /* Taille plus grande pour le nom */
+    color: #ff6339; /* Nom du chat en orange */
+    margin-bottom: 20px;
+}
+
+.animal-name{
     color: #ff6339;
-    margin-bottom: 10px;
 }
 
 .animal-info .details p {
@@ -55,19 +71,12 @@ main {
     margin: 5px 0;
 }
 
-/* Description */
-.description {
-    margin-top: 20px;
-    font-size: 1.1em;
-    line-height: 1.6;
-}
-
 /* Formulaire */
 .form-container {
     max-width: 70%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff; /* Fond blanc pour s'intégrer avec Bootstrap */
+    background-color: #fff;
     border-radius: 20px;
 }
 
@@ -88,7 +97,7 @@ main {
 }
 
 .form-container textarea {
-    resize: none; /* Empêche le redimensionnement */
+    resize: none;
 }
 
 .form-container button {
@@ -107,12 +116,5 @@ main {
 .form-container button:hover {
     background-color: #dd0303;
     color: white;
-}
-
-/*Carte*/
-
-.custom-card {
-    border: none !important; /* Supprime la bordure */
-    box-shadow: none !important; /* Supprime les ombres éventuelles */
 }
 

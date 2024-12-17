@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/classes/Database.php';
 require_once __DIR__ . '/classes/Adoption.php';
+include "header.php";
 
 // Connexion à la base de données
 $db = (new Database())->getConnection();
@@ -60,89 +61,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demande d'Adoption</title>
-    <script>
-        // Affichage du pop-up de succès ou d'erreur
-        function showPopup(message, isSuccess) {
-            const popup = document.createElement('div');
-            popup.style.position = 'fixed';
-            popup.style.top = '50%';
-            popup.style.left = '50%';
-            popup.style.transform = 'translate(-50%, -50%)';
-            popup.style.padding = '20px';
-            popup.style.backgroundColor = isSuccess ? 'green' : 'red';
-            popup.style.color = 'white';
-            popup.style.borderRadius = '10px';
-            popup.style.fontSize = '18px';
-            popup.style.textAlign = 'center';
-            popup.textContent = message;
-            document.body.appendChild(popup);
-
-            setTimeout(() => {
-                popup.remove();
-            }, 5000); // Ferme le pop-up après 5 secondes
-        }
-
-        // Soumission du formulaire via AJAX
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById('adoptionForm');
-
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();  // Empêche la soumission normale du formulaire
-
-                const formData = new FormData(form);
-
-                // Envoi de la requête AJAX
-                fetch('chat.php?id=<?= $animal['id']; ?>', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === "success") {
-                        showPopup(data.message, true);
-                    } else {
-                        showPopup(data.message, false);
-                    }
-                })
-                .catch(error => {
-                    showPopup("Erreur de connexion. Veuillez réessayer.", false);
-                });
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="chat.css">
 </head>
 <body>
-    <h1>Demande d'Adoption pour <?= htmlspecialchars($animal['nom']); ?></h1>
-    <img src="<?= htmlspecialchars($animal['photo']); ?>" alt="Photo de <?= htmlspecialchars($animal['nom']); ?>" width="200">
-    <p><strong>Espèce :</strong> <?= htmlspecialchars($animal['espece']); ?></p>
-    <p><strong>Race :</strong> <?= htmlspecialchars($animal['race']); ?></p>
-    <p><strong>Description :</strong> <?= nl2br(htmlspecialchars($animal['description'])); ?></p>
-    <p><strong>Sexe :</strong> <?= htmlspecialchars($animal['sexe']); ?></p>
+    <div class="container mt-5">
 
-    <!-- Formulaire de demande d'adoption -->
-    <form id="adoptionForm" method="POST">
-        <input type="hidden" name="chat_id" value="<?= $animal['id']; ?>">
+        <div class="row align-items-center">
+            <!-- Image de l'animal -->
+            <div class="col-md-4 text-center">
+                <img src="<?= htmlspecialchars($animal['photo']); ?>" alt="Photo de <?= htmlspecialchars($animal['nom']); ?>" class="img-fluid rounded-3">
+            </div>
 
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom" required><br>
+            <!-- Détails de l'animal -->
+            <div class="col-md-8">
+                <h1 class="animal-name"><?= htmlspecialchars($animal['nom']); ?></h1>
+                <p><strong>Espèce :</strong> <?= htmlspecialchars($animal['espece']); ?></p>
+                <p><strong>Race :</strong> <?= htmlspecialchars($animal['race']); ?></p>
+                <p><strong>Description :</strong> <?= nl2br(htmlspecialchars($animal['description'])); ?></p>
+                <p><strong>Sexe :</strong> <?= htmlspecialchars($animal['sexe']); ?></p>
+            </div>
+        </div>
+        <h3>Adopter</h3>
+        <!-- Formulaire de demande d'adoption -->
+        <form id="adoptionForm" method="POST" class="mt-5">
+            <input type="hidden" name="chat_id" value="<?= $animal['id']; ?>">
 
-        <label for="nom_famille">Nom de famille :</label>
-        <input type="text" id="nom_famille" name="nom_famille" required><br>
+            <div class="form-container">
+                <div class="mb-3">
+                    <label for="prenom" class="form-label">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" class="form-control" required>
+                </div>
 
-        <label for="date_naissance">Date de naissance :</label>
-        <input type="date" id="date_naissance" name="date_naissance" required><br>
+                <div class="mb-3">
+                    <label for="nom_famille" class="form-label">Nom de famille</label>
+                    <input type="text" id="nom_famille" name="nom_famille" class="form-control" required>
+                </div>
 
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required><br>
+                <div class="mb-3">
+                    <label for="date_naissance" class="form-label">Date de naissance</label>
+                    <input type="date" id="date_naissance" name="date_naissance" class="form-control" required>
+                </div>
 
-        <label for="telephone">Téléphone :</label>
-        <input type="text" id="telephone" name="telephone" required><br>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
 
-        <label for="message">Message :</label>
-        <textarea id="message" name="message" rows="4" required></textarea><br>
+                <div class="mb-3">
+                    <label for="telephone" class="form-label">Téléphone</label>
+                    <input type="text" id="telephone" name="telephone" class="form-control" required>
+                </div>
 
-        <button type="submit">Envoyer la Demande</button>
-    </form>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-control" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Envoyer la Demande</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php include "footer.php";
+?>
