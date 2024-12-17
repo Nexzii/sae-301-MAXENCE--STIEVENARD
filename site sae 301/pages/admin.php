@@ -135,7 +135,7 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
                         <p class="card-text">Race : <?= htmlspecialchars($animal['race']) ?></p>
                     </div>
                     <div class="card-footer d-flex justify-content-between card-custom-blue">
-                        <a href="./uploads/edit.php?id=<?= $animal['id'] ?>" class="btn btn-warning">Modifier</a>
+                        <a href="edit.php?id=<?= $animal['id'] ?>" class="btn btn-warning">Modifier</a>
                         <a href="delete.php?id=<?= $animal['id'] ?>" class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer cet animal ?')">Supprimer</a>
                     </div>
                 </div>

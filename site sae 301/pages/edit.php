@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include '../config.php';
 
 // Récupérer l'ID du chat à modifier
 $id = $_GET['id'] ?? null;
