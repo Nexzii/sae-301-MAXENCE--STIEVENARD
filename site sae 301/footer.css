@@ -79,17 +79,14 @@
     color: white; /* Couleur du texte et des icônes */
     text-decoration: none; /* Supprime le soulignement */
     font-weight: bold;
+    transition: transform 0.4s ease;
 }
 
 .footer-icons a:hover {
     color: #ff9800; /* Couleur au survol */
+    transform: scale(1.2);
 }
 
 .footer-icons a i {
     font-size: 1.5rem; /* Taille des icônes */
-    transition: transform 0.3s ease;
-}
-
-.footer-icons a i:hover {
-    transform: scale(1.2); /* Agrandissement au survol */
 }

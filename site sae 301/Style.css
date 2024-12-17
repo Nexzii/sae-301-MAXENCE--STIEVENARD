@@ -1,3 +1,8 @@
+html, body {
+    height: 100%; /* Nécessaire pour que la page prenne toute la hauteur de la fenêtre */
+    display: flex;
+    flex-direction: column; /* Dispose les éléments en colonne */
+}
 
 /* General styles */
 body {
@@ -151,20 +156,6 @@ header nav a {
     }
 }
 
-/* Footer */
-footer {
-    background-color: #1cbac9;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    border-radius: 15px 15px 0 0;
-}
-
-footer a {
-    color: #fff;
-    text-decoration: underline;
-}
-
 /* Chat Page */
 .chat-container {
     display: flex;
@@ -228,4 +219,8 @@ footer a {
 
 .card-body{
     background-color: #1cbac9; 
+}
+
+.container{
+    flex: 1;
 }
