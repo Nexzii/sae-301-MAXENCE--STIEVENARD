@@ -68,7 +68,7 @@ footer {
     width: 100%;
     height: 50vh;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)), 
-                url('recources/esperance-vie-chiens-chiot-golden-retriever.jpg') no-repeat center center/cover;
+                url('recources/esperance-vie-chiens-chiot-golden-retriever.webp') no-repeat center center/cover;
     border-radius: 20px;
     margin: 40px auto;
     display: flex;

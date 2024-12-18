@@ -62,8 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demande d'Adoption</title>
+    <title><?= htmlspecialchars($animal['nom']); ?>, <?= htmlspecialchars($animal['race']); ?> à Adopter à Aulnat (63) | Amis 4 Pattes</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <meta name="description" content="Découvrez <?= htmlspecialchars($animal['nom']); ?>, un <?= htmlspecialchars($animal['race']); ?> à adopter à Aulnat près de Clermont-Ferrand (63). Donnez-lui la chance de trouver un foyer aimant.">
     <link rel="stylesheet" href="chat.css">
 </head>
 <body>

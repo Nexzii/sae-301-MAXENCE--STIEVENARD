@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amis 4 Pattes</title>
+    <title>Adoption d'animaux à Aulnat (63) | Amis 4 Pattes</title>
     <link rel="stylesheet" href="acceuil.css">
+    <meta name="description" content="Bienvenue sur Amis 4 Pattes ! Adoptez un animal à Aulnat près de Clermont-Ferrand (63). Chiens, chats, lapins et autres animaux cherchent un foyer aimant.">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,13 +21,13 @@
         <a href="#" class="hero-button">
             <div class="photo-group">
                 <div class="photo-circle">
-                    <img src="ressources/jb.jpg" alt="Photo 1">
+                    <img src="ressources/jb.webp" alt="Photo JB">
                 </div>
                 <div class="photo-circle">
-                    <img src="ressources/romain.jpg" alt="Photo 2">
+                    <img src="ressources/romain.webp" alt="Photo Romain">
                 </div>
                 <div class="photo-circle">
-                    <img src="ressources/etienne.jpg" alt="Photo 3">
+                    <img src="ressources/etienne.webp" alt="Photo Étienne">
                 </div>
             </div>
             <span>À propos →</span>
