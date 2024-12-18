@@ -1,18 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<?php include 'header.php'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoptez un animal à Aulnat (63) | Amis 4 Pattes</title>
     <meta name="description" content="Parcourez nos profils d'animaux à adopter à Aulnat près de Clermont-Ferrand (63). Trouvez votre futur compagnon parmi nos chiens, chats, lapins, hamsters et autres.">
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="../css/style.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <!-- Header -->
-
-    <?php include 'header.php'; ?>
-
     <!-- Filtres -->
     <div class="filters" style="display: flex; justify-content: center; margin: 20px 0; gap: 10px;">
         <select id="espece">
@@ -42,7 +41,7 @@
 
     <!-- Footer -->
     
-    <?php include 'footer.php'; ?>
+
 
     <!-- Script AJAX -->
     <script>
@@ -89,4 +88,5 @@
         });
     </script>
 </body>
+<?php include 'footer.php'; ?>
 </html>

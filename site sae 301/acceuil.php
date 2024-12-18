@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoption d'animaux à Aulnat (63) | Amis 4 Pattes</title>
-    <link rel="stylesheet" href="acceuil.css">
+    <link rel="stylesheet" href="css/acceuil.css">
+    <link href="../css/style.css" rel="stylesheet">
     <meta name="description" content="Bienvenue sur Amis 4 Pattes ! Adoptez un animal à Aulnat près de Clermont-Ferrand (63). Chiens, chats, lapins et autres animaux cherchent un foyer aimant.">
     
     <!-- Bootstrap CSS -->
@@ -47,7 +48,7 @@
     $query = $pdo->query("SELECT nom, description, photo FROM animaux WHERE espece = 'Chat'");
     $chats = $query->fetchAll(PDO::FETCH_ASSOC);
     ?>
-    <h2 class="carousel-title text-center mt-5 mb-4">Nos amis à l'adoption</h2>
+    <h2 class="carousel-title text-center mt-5 mb-4">Nos Amis à l'Adoption</h2>
 
     <div id="carouselExample" class="carousel slide mb-5" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -80,7 +81,7 @@
                 <a href="apropos.php" class="contact-button">Contactez-nous →</a>
             </div>
             <div class="contact-image">
-                <img src="recources/hamster-mignon.webp" alt="Hamster mignon">
+                <img src="ressources/hamster-mignon.webp" alt="Hamster mignon">
             </div>
         </div>
     </section>
