@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p><strong>Sexe :</strong> <?= htmlspecialchars($animal['sexe']); ?></p>
             </div>
         </div>
-        <h2>Adopter</h2>
+        <h3>Adopter</h3>
         <!-- Formulaire de demande d'adoption -->
         <form id="adoptionForm" method="POST" class="mt-5">
             <input type="hidden" name="chat_id" value="<?= $animal['id']; ?>">

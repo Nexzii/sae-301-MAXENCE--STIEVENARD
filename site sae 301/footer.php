@@ -17,7 +17,7 @@
             <p>3 All. du Grenouillet, 63510 Aulnat</p>
             <ul>
                 <li><a href="pages/auth.php">Admin</a></li>
-                <li><a href="mentions.php">Mentions légales</a></li>
+                <li><a href="mentions-legales.php">Mentions légales</a></li>
             </ul>
         </div>
         <div class="footer-right">
