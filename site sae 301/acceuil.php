@@ -18,7 +18,7 @@
     <div class="hero-content">
         <h1>Refuge pour animaux</h1>
         <p>Donnez une seconde chance à nos amis à quatre pattes.</p>
-        <a href="#" class="hero-button">
+        <a href="apropos.php" class="hero-button">
             <div class="photo-group">
                 <div class="photo-circle">
                     <img src="ressources/jb.webp" alt="Photo JB">
