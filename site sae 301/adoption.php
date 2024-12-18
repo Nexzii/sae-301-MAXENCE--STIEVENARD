@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amis 4 Pattes - Adoption</title>
+    <title>Adoptez un animal à Aulnat (63) | Amis 4 Pattes</title>
+    <meta name="description" content="Parcourez nos profils d'animaux à adopter à Aulnat près de Clermont-Ferrand (63). Trouvez votre futur compagnon parmi nos chiens, chats, lapins, hamsters et autres.">
     <link rel="stylesheet" href="Style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="apropos.css">
-    <title>À Propos - Amis 4 Pattes</title>
+    <title>À propos de nous | Amis 4 Pattes, Adoption d’animaux à Aulnat</title>
+    <meta name="description" content="Découvrez notre mission : aider les chiens, chats, lapins et autres animaux à trouver un foyer aimant à Aulnat près de Clermont-Ferrand (63).">
 </head>
 <body>
     <div id="animation-container">
@@ -14,7 +15,7 @@
     <main>
         <section class="quisommesnous">
             <div class="image-container">
-                <img src="./ressources/déclinaison bleue-02.png" alt="Logo Amis 4 Pattes">
+                <img src="./ressources/déclinaison bleue-02.webp" alt="Logo Amis 4 Pattes">
             </div>
             <div class="text-container">
                 <h2>Qui sommes-nous?</h2>
@@ -54,11 +55,11 @@
         <section>
             <h2>Nos sauveurs</h2>
             <div>
-                <div><img src="ressources/etienne.jpg" alt="Étienne"><p>Étienne B.</p></div>
-                <div><img src="ressources/moi.jpg" alt="Maxence"><p>Maxence S.</p></div>
-                <div><img src="ressources/jb.jpg" alt="JB"><p>Jean-Baptiste B.</p></div>
-                <div><img src="ressources/romain.jpg" alt="Romain"><p>Romain P.</p></div>
-                <div><img src="ressources/cloe.jpg" alt="Cloé"><p>Cloé P.</p></div>
+                <div><img src="ressources/etienne.webp" alt="Étienne"><p>Étienne B.</p></div>
+                <div><img src="ressources/moi.webp" alt="Maxence"><p>Maxence S.</p></div>
+                <div><img src="ressources/jb.webp" alt="JB"><p>Jean-Baptiste B.</p></div>
+                <div><img src="ressources/romain.webp" alt="Romain"><p>Romain P.</p></div>
+                <div><img src="ressources/cloe.webp" alt="Cloé"><p>Cloé P.</p></div>
             </div>
         </section>
     </main>
