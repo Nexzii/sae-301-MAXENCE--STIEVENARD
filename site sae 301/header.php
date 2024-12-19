@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,13 +20,32 @@
             top: 0;
             z-index: 1000;
         }
+        
+        header nav {
+        display: flex;
+        gap: 15px;
+        }
+
+        header nav a {
+        margin: 5px 0;
+        }
+
+        header nav.active {
+        flex-direction: column;
+        background-color: #1cbac9;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
 
         header .logo {
             font-size: 24px;
             font-weight: bold;
         }
 
-        /* Desktop navigation */
         header .nav-links {
             display: flex;
             gap: 20px;
@@ -41,11 +61,10 @@
             text-decoration: underline;
         }
 
-        /* Hamburger menu styles (hidden on desktop) */
         .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
+            flex-direction: column;
         }
 
         .hamburger span {
@@ -56,7 +75,14 @@
             border-radius: 5px;
         }
 
-        /* Mobile navigation */
+        .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        margin: 5px 0;
+        transition: 0.4s;
+        }
+
         .nav-links.mobile {
             display: none;
             flex-direction: column;
@@ -72,20 +98,19 @@
         .nav-links.mobile.active {
             display: flex;
         }
-
+        
         @media (max-width: 768px) {
-            /* Hide desktop links */
-            header .nav-links.desktop {
-                display: none;
-            }
-
-            /* Show hamburger menu */
-            .hamburger {
-                display: flex;
-            }
+        .hamburger {
+            display: block;
         }
+
+        header nav {
+            display: none;
+        }
+}
     </style>
 </head>
+
 <body>
     <header>
         <div class="logo">Amis 4 Pattes</div>
@@ -104,37 +129,41 @@
             <a href="adoption.php">Adoption</a>
             <a href="apropos.php">À propos</a>
         </nav>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="curseur.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/curseur.css">
+        <link href="../css/style.css" rel="stylesheet">
     </header>
+
     <body>
 
 
-    <script>
-        // JavaScript for responsive hamburger menu
-        const hamburger = document.querySelector('.hamburger');
-        const mobileNav = document.querySelector('.nav-links.mobile');
+        <script>
+            // JavaScript for responsive hamburger menu
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.querySelector('.nav-links.mobile');
 
-        hamburger.addEventListener('click', () => {
-            const isActive = mobileNav.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isActive.toString());
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links.mobile a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.addEventListener('click', () => {
+                const isActive = mobileNav.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', isActive.toString());
             });
-        });
 
-        // Close menu if clicked outside
-        document.addEventListener('click', (event) => {
-            if (!hamburger.contains(event.target) && !mobileNav.contains(event.target)) {
-                mobileNav.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            }
-        });
-    </script>
-</body>
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-links.mobile a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Close menu if clicked outside
+            document.addEventListener('click', (event) => {
+                if (!hamburger.contains(event.target) && !mobileNav.contains(event.target)) {
+                    mobileNav.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        </script>
+    </body>
+
 </html>

@@ -39,10 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link href="../css/style.css" rel="stylesheet">
     <title>Connexion</title>
 </head>
-<body>
+<body class="">
     <?php include '../header.php'; ?> <!-- Assure-toi que le chemin vers header.php est correct -->
 
     <h1>Connexion</h1>

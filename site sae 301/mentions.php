@@ -10,7 +10,8 @@ include "header.php";
     <title>Mentions Légales | Amis 4 Pattes, Adoption d'animaux à Aulnat</title>
     <meta name="description" content="Consultez les mentions légales d’ Amis 4 Pattes, site dédié à l'adoption d'animaux à Aulnat près de Clermont-Ferrand (63). Informations légales et coordonnées.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> <!-- Assurez-vous que le CSS est correctement lié -->
+    <link rel="stylesheet" href="css/style.css"> 
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">

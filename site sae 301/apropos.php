@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="apropos.css">
+    <link rel="stylesheet" href="css/apropos.css">
+    <link href="../css/style.css" rel="stylesheet">
     <title>À propos de nous | Amis 4 Pattes, Adoption d’animaux à Aulnat</title>
     <meta name="description" content="Découvrez notre mission : aider les chiens, chats, lapins et autres animaux à trouver un foyer aimant à Aulnat près de Clermont-Ferrand (63).">
 </head>
