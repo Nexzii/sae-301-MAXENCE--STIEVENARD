@@ -14,7 +14,7 @@
     <?php include 'header.php'; ?>
 
     <!-- Filtres -->
-    <div class="filters" style="display: flex; justify-content: center; margin: 20px 0; gap: 10px;">
+    <div class="filters" style="display: flex; justify-content: center; margin: 20px 20%; gap: 10px;">
         <select id="espece">
             <option value="">Espèce</option>
             <option value="Chat">Chat</option>
