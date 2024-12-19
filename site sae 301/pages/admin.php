@@ -1,5 +1,17 @@
+
 <?php
 include '../config.php';
+
+session_start(); // Démarre la session
+
+// Vérifie si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    // Redirige vers la page de connexion si non connecté
+    header("Location: auth.php");
+    exit;
+}
+
+
 
 // Liste des espèces et races
 $especesRaces = [
@@ -58,7 +70,7 @@ $demandes = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administration des Animaux</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/admin.css" rel="stylesheet">
+    <link href="admin.css" rel="stylesheet">
 </head>
 <body>
 <?php include '../header.php'; ?>

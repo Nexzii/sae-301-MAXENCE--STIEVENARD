@@ -1,11 +1,75 @@
+/*espacement des sections*/
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* Titre "Nos amis à l'adoption" */
+.carousel-title {
+    margin-bottom: 40px; /* Augmente l'espacement sous le titre */
+}
+
+/* Carousel */
+.carousel {
+    margin-top: 20px; /* Ajoute un petit espace au-dessus du carousel */
+    margin-bottom: 40px; /* Ajoute un espace sous le carousel */
+}
+
 /* Section Hero */
+.hero-section {
+    margin-bottom: 60px; /* Espace supplémentaire sous la section Hero */
+}
+
+/* Section de contact */
+.contact-section {
+    margin-top: 40px; /* Ajoute un espace au-dessus de la section de contact */
+    margin-bottom: 60px; /* Ajoute un espace sous la section de contact */
+}
+
+/* Pied de page */
+footer {
+    margin-top: 60px; /* Espace supplémentaire avant le pied de page */
+}
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Hero Section */
 .hero-section {
     position: relative;
     width: 100%;
     height: 50vh;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)), 
                 url('../ressources/esperance-vie-chiens-chiot-golden-retriever.webp') no-repeat center center/cover;
-    border-radius: 20px;    
+    border-radius: 20px;
     margin: 40px auto;
     display: flex;
     align-items: center;
@@ -13,6 +77,7 @@
     padding: 20px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 
 .hero-button {
     position: absolute;
@@ -89,6 +154,70 @@
     gap: -15px; /* Chevauchement des cercles */
 }
 
+.photo-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+    background-color: #eee;
+    z-index: 1;
+}
+
+.photo-circle:nth-child(2) {
+    z-index: 2; /* Place la deuxième image au-dessus de la première */
+}
+
+.photo-circle:nth-child(3) {
+    z-index: 3; /* Place la troisième image au-dessus des deux autres */
+}
+/* Bouton Responsive */
+@media (max-width: 768px) {
+    .hero-button {
+        position: relative; /* Ne fixe plus la position */
+        bottom: auto;
+        right: auto;
+        margin: 20px auto; /* Centre le bouton horizontalement */
+        padding: 10px 20px; /* Réduit l'espacement interne */
+        flex-direction: column; /* Passe les éléments en colonne */
+        gap: 10px; /* Ajuste l'espacement entre les cercles et le texte */
+    }
+
+    .photo-circle {
+        width: 30px; /* Réduit la taille des cercles */
+        height: 30px;
+    }
+
+    .hero-button span {
+        font-size: 0.9rem; /* Réduit la taille du texte */
+    }
+
+    .hero-button small {
+        font-size: 0.8rem; /* Texte secondaire plus petit */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-button {
+        padding: 8px 15px; /* Réduit davantage les marges */
+        border-radius: 20px; /* Ajuste les bords */
+    }
+
+    .photo-circle {
+        width: 25px;
+        height: 25px;
+    }
+
+    .hero-button span {
+        font-size: 0.8rem;
+    }
+
+    .hero-button small {
+        font-size: 0.7rem;
+    }
+}
+
 /* Carousel Section */
 .carousel-title {
     font-size: 2rem; /* Taille de la police */
@@ -133,24 +262,7 @@
     background-position: center;
     background-repeat: no-repeat;
 }
-/* Responsive Design */
-@media (max-width: 768px) {
-    .carousel-section {
-        padding: 20px;
-    }
 
-    .carousel-card img {
-        max-height: 150px;
-    }
-
-    .carousel-card h3 {
-        font-size: 1.2rem;
-    }
-
-    .carousel-card p {
-        font-size: 0.9rem;
-    }
-}
 
 /* Contact Section */
 .contact-section {
@@ -216,48 +328,21 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* hero Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .hero-button {
-        position: relative; /* Ne fixe plus la position */
-        bottom: auto;
-        right: auto;
-        margin: 20px auto; /* Centre le bouton horizontalement */
-        padding: 10px 20px; /* Réduit l'espacement interne */
-        flex-direction: column; /* Passe les éléments en colonne */
-        gap: 10px; /* Ajuste l'espacement entre les cercles et le texte */
+    .carousel-section {
+        padding: 20px;
     }
 
-    .photo-circle {
-        width: 30px; /* Réduit la taille des cercles */
-        height: 30px;
+    .carousel-card img {
+        max-height: 150px;
     }
 
-    .hero-button span {
-        font-size: 0.9rem; /* Réduit la taille du texte */
+    .carousel-card h3 {
+        font-size: 1.2rem;
     }
 
-    .hero-button small {
-        font-size: 0.8rem; /* Texte secondaire plus petit */
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-button {
-        padding: 8px 15px; /* Réduit davantage les marges */
-        border-radius: 20px; /* Ajuste les bords */
-    }
-
-    .photo-circle {
-        width: 25px;
-        height: 25px;
-    }
-
-    .hero-button span {
-        font-size: 0.8rem;
-    }
-
-    .hero-button small {
-        font-size: 0.7rem;
+    .carousel-card p {
+        font-size: 0.9rem;
     }
 }

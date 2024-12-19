@@ -12,9 +12,4 @@ try {
 }
 
 
-return [
-    'google_maps_api_key' => 'VOTRE_CLE_API',
-    'petfinder_api_key' => 'VOTRE_CLE_API',
-    'sendgrid_api_key' => 'VOTRE_CLE_API',
-];
 ?>

@@ -3,12 +3,12 @@ session_start();
 require_once __DIR__ . '/../classes/Database.php';
 require_once __DIR__ . '/../classes/User.php';
 
-$error = "";
+$error = ""; // Initialisation de la variable pour les messages d'erreur
 
 // Traitement du formulaire de connexion
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'] ?? null;
-    $password = $_POST['password'] ?? null;
+    $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : null;
+    $password = isset($_POST['password']) ? htmlspecialchars($_POST['password']) : null;
 
     if ($email && $password) {
         // Connexion à la base de données
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username'] = $login_user['username'];
 
             // Rediriger vers la page d'administration après une connexion réussie
-            header('Location: admin.php');  // Redirige vers la page d'administration
+            header('Location: admin.php');
             exit();
         } else {
             $error = "Email ou mot de passe incorrect."; // Affiche un message d'erreur si la connexion échoue
@@ -39,27 +39,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../css/auth.css">
-    <link href="../css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="auth.css">
     <title>Connexion</title>
 </head>
-<body class="">
+<body>
     <?php include '../header.php'; ?> <!-- Assure-toi que le chemin vers header.php est correct -->
 
     <h1>Connexion</h1>
   
+    <!-- Affichage du message d'erreur -->
     <?php if ($error): ?>
-        <p style="color: red;"><?= htmlspecialchars($error); ?></p>
+        <p style="color: red; text-align: center;"><?= htmlspecialchars($error); ?></p>
     <?php endif; ?>
 
-    <form method="POST" action="auth.php">
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" required><br>
-
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" required><br>
-
-        <button type="submit">Se connecter</button>
+    <!-- Formulaire de connexion -->
+    <form method="POST" action="auth.php" style="text-align: center;">
+        <div>
+            <label for="email">Email :</label><br>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+        <div>
+            <label for="password">Mot de passe :</label><br>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <br>
+        <button type="submit" style="padding: 10px 20px; background-color: #1cbac9; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+            Se connecter
+        </button>
     </form>
 </body>
 </html>

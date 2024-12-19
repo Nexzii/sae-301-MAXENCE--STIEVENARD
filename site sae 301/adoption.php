@@ -1,17 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<?php include 'header.php'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adoptez un animal à Aulnat (63) | Amis 4 Pattes</title>
     <meta name="description" content="Parcourez nos profils d'animaux à adopter à Aulnat près de Clermont-Ferrand (63). Trouvez votre futur compagnon parmi nos chiens, chats, lapins, hamsters et autres.">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="../css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/Style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    <!-- Header -->
+
+    <?php include 'header.php'; ?>
+
     <!-- Filtres -->
     <div class="filters" style="display: flex; justify-content: center; margin: 20px 0; gap: 10px;">
         <select id="espece">
@@ -39,54 +40,88 @@
     <!-- Conteneur des animaux -->
     <div id="contenu-animaux" class="grid-container"></div>
 
+    <div id="contenu-animaux" class="grid-container"></div>
+
+<!-- Bouton Charger Plus -->
+<div style="text-align: center; margin: 20px 0;">
+    <button id="btn-charger-plus" style="padding: 10px 20px; background-color: #1cbac9; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+        Charger plus
+    </button>
+</div>
+
     <!-- Footer -->
     
-
+    <?php include 'footer.php'; ?>
 
     <!-- Script AJAX -->
     <script>
         $(document).ready(function() {
-            function chargerAnimaux() {
-                const espece = $('#espece').val();
-                const race = $('#race').val();
-                const sexe = $('#sexe').val();
-                const age = $('#age').val();
+    let offset = 0; // Initialisation de l'offset
+    const limit = 8; // Nombre d'animaux par lot
 
-                $.ajax({
-                    url: 'API/api_animaux.php', // Appel de l'API
-                    type: 'GET',
-                    data: { espece, race, sexe, age },
-                    success: function(response) {
-                        $('#contenu-animaux').empty();
-                        if (response.success && response.data.length > 0) {
-                            response.data.forEach(animal => {
-                                $('#contenu-animaux').append(`
-                                    <a href="chat.php?id=${animal.id}" style="text-decoration: none; color: inherit;">
-                                        <div class="custom-card" style="width: 300px; margin: 10px; background: #fff; border-radius: 10px; overflow: hidden; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                                            <img src="${animal.photo}" alt="${animal.nom}" style="width: 100%; height: 200px; object-fit: cover;">
-                                            <div class="card-body" style="padding: 10px;">
-                                                <h4 style="margin: 10px 0; color: #333;">${animal.nom}</h4>
-                                                
-                                            </div>
-                                        </div>
-                                    </a>
-                                `);
-                            });
-                        } else {
-                            $('#contenu-animaux').append('<p style="text-align: center;">Aucun animal trouvé.</p>');
-                        }
-                    },
-                    error: function() {
-                        alert('Erreur lors du chargement des données.');
+    function chargerAnimaux(reset = false) {
+        const espece = $('#espece').val();
+        const race = $('#race').val();
+        const sexe = $('#sexe').val();
+        const age = $('#age').val();
+
+        if (reset) {
+            $('#contenu-animaux').empty(); // Réinitialiser les animaux affichés
+            offset = 0; // Réinitialiser l'offset
+        }
+
+        $.ajax({
+            url: 'API/api_animaux.php',
+            type: 'GET',
+            data: { espece, race, sexe, age, limit, offset },
+            success: function(response) {
+                if (response.success && response.data.length > 0) {
+                    response.data.forEach(animal => {
+                        $('#contenu-animaux').append(`
+                            <a href="chat.php?id=${animal.id}" style="text-decoration: none; color: inherit;">
+                                <div class="custom-card" style="width: 300px; margin: 10px; background: #fff; border-radius: 10px; overflow: hidden; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                                    <img src="${animal.photo}" alt="${animal.nom}" style="width: 100%; height: 200px; object-fit: cover;">
+                                    <div class="card-body" style="padding: 10px;">
+                                        <h4 style="margin: 10px 0; color: #333;">${animal.nom}</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        `);
+                    });
+
+                    offset += limit; // Augmenter l'offset pour le prochain lot
+
+                    if (response.data.length < limit) {
+                        $('#btn-charger-plus').hide(); // Cacher le bouton si plus d'animaux
+                    } else {
+                        $('#btn-charger-plus').show(); // Afficher le bouton si encore des animaux
                     }
-                });
+                } else if (reset) {
+                    $('#contenu-animaux').append('<p style="text-align: center;">Aucun animal trouvé.</p>');
+                    $('#btn-charger-plus').hide(); // Cacher le bouton si aucun animal
+                }
+            },
+            error: function() {
+                alert('Erreur lors du chargement des données.');
             }
-
-            // Appel initial et sur changement des filtres
-            $('#espece, #race, #sexe, #age').on('change', chargerAnimaux);
-            chargerAnimaux();
         });
+    }
+
+    // Premier chargement
+    chargerAnimaux(true);
+
+    // Recharger les animaux sur changement des filtres
+    $('#espece, #race, #sexe, #age').on('change', function() {
+        chargerAnimaux(true);
+    });
+
+    // Bouton Charger Plus
+    $('#btn-charger-plus').on('click', function() {
+        chargerAnimaux();
+    });
+});
+
     </script>
+    
 </body>
-<?php include 'footer.php'; ?>
 </html>

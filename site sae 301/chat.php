@@ -66,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <meta name="description" content="Découvrez <?= htmlspecialchars($animal['nom']); ?>, un <?= htmlspecialchars($animal['race']); ?> à adopter à Aulnat près de Clermont-Ferrand (63). Donnez-lui la chance de trouver un foyer aimant.">
     <link rel="stylesheet" href="css/chat.css">
-    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
